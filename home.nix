@@ -19,6 +19,18 @@
         EDITOR = "vim";
     };
 
-    programs.home-manager.enable = true;
-    programs.fastfetch.enable = true;
+    programs = {
+        home-manager.enable = true;
+        fastfetch.enable = true;
+        zoxide = {
+            enable = true;
+            enableZshIntegration = true;
+            options = ["--cmd cd"];
+        };
+        eza = {
+            enable = true;
+            enableZshIntegration = true;
+            icons = "auto";
+        }
+    };
 }
