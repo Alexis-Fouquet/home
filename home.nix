@@ -80,9 +80,11 @@
         zsh = {
             enable = true;
             autocd = true;
+            zprof.enable = false;
             shellAliases = {
                 vim = "nvim";
             };
+            completionInit = "autoload -Uz compinit && compinit -C";
             antidote = {
                 enable = true;
                 plugins = [
@@ -101,7 +103,7 @@
             ''
 alias datenow="date +\"%s,%N\""
 
-datenow
+# datenow
 INSTANT_PROMPT="''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
 if [[ -r $INSTANT_PROMPT ]]; then
   source $INSTANT_PROMPT
@@ -112,18 +114,17 @@ if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
     p10k_applied=true
 fi
 
-datenow
-echo "Start 1"
+# datenow
+# echo "Start 1"
             '';
             before = lib.mkOrder 550
             ''
-compinit -C
-datenow
-echo "Start 2"
+# datenow
+# echo "Start 2"
             '';
             after = lib.mkOrder 1000
             ''
-datenow
+# datenow
 if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
     source ~/.p10k.zsh
     p10k_applied=true
