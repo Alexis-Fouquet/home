@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
     home.username = "alexis";
     home.homeDirectory = "/home/alexis";
@@ -43,13 +43,11 @@
             enableGitIntegration = true;
             /* Will be changed later. */
             /* Need to configure zsh before with home-manager. */
-            shellIntegration.mode = null;
-            /*
+            /* shellIntegration.mode = null; */
             shellIntegration = {
                 enableZshIntegration = true;
                 mode = "enabled";
             };
-            */
             settings = {
                 enable_audio_bell = false;
 
@@ -78,6 +76,60 @@
             userName = "Alexis Fouquet";
             /* Public email for github */
             userEmail = "144385093+Alexis-Fouquet@users.noreply.github.com";
+        };
+        zsh = {
+            enable = true;
+            autocd = true;
+            shellAliases = {
+                vim = "nvim";
+            };
+            antidote = {
+                enable = true;
+                plugins = [
+                    "romkatv/powerlevel10k"
+                    "getantidote/use-omz"
+                    "ohmyzsh/ohmyzsh path:lib"
+                    "ohmyzsh/ohmyzsh path:plugins/git"
+                    "ohmyzsh/ohmyzsh path:plugins/colored-man-pages"
+                    "zsh-users/zsh-autosuggestions"
+                    "zsh-users/zsh-syntax-highlighting kind:defer"
+                    "MichaelAquilina/zsh-you-should-use"
+                ];
+            };
+            initContent =
+            let early = lib.mkOrder 500
+            ''
+alias datenow="date +\"%s,%N\""
+
+datenow
+INSTANT_PROMPT="''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+if [[ -r $INSTANT_PROMPT ]]; then
+  source $INSTANT_PROMPT
+fi
+
+if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
+    source ~/.p10k.zsh
+    p10k_applied=true
+fi
+
+datenow
+echo "Start 1"
+            '';
+            before = lib.mkOrder 550
+            ''
+compinit -C
+datenow
+echo "Start 2"
+            '';
+            after = lib.mkOrder 1000
+            ''
+datenow
+if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
+    source ~/.p10k.zsh
+    p10k_applied=true
+fi
+            '';
+            in lib.mkMerge [early before after];
         };
     };
 }
