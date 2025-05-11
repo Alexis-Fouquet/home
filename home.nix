@@ -23,6 +23,11 @@
         home-manager.enable = true;
         fastfetch.enable = true;
         lazygit.enable = true;
+        bat.enable = true;
+        fzf = {
+            enable = true;
+            enableZshIntegration = true;
+        };
         zoxide = {
             enable = true;
             enableZshIntegration = true;
@@ -83,6 +88,8 @@
             zprof.enable = false;
             shellAliases = {
                 vim = "nvim";
+                ":q" = "exit";
+                cat = "bat";
             };
             completionInit = "autoload -Uz compinit && compinit -C";
             antidote = {
