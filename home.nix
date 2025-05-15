@@ -9,6 +9,7 @@
     [
         nerd-fonts.jetbrains-mono
         nerd-fonts.fantasque-sans-mono
+        neovim
     ];
     fonts.fontconfig.enable = true;
 
@@ -90,6 +91,7 @@
                 vim = "nvim";
                 ":q" = "exit";
                 cat = "bat";
+                icat = "kitten icat";
             };
             completionInit = "autoload -Uz compinit && compinit -C";
             antidote = {

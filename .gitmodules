@@ -1,3 +1,6 @@
 [submodule "zsh"]
 	path = zsh
 	url = https://github.com/Alexis-Fouquet/zsh
+[submodule "NeovimConfig"]
+	path = NeovimConfig
+	url = https://github.com/Alexis-Fouquet/NeovimConfig
