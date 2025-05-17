@@ -4,8 +4,9 @@
         ./zsh.nix
     ];
 
-    home.username = "alexis";
-    home.homeDirectory = "/home/alexis";
+    /* This configuration should be portable */
+    home.username = builtins.getEnv "USER";
+    home.homeDirectory = builtins.getEnv "HOME";
     /* Should not change */
     home.stateVersion = "24.11";
 
@@ -18,6 +19,11 @@
     fonts.fontconfig.enable = true;
 
     home.file = {
+        ".config/nvim" = {
+            source = ./NeovimConfig;
+            recursive = true;
+            enable = true;
+        };
     };
 
     home.sessionVariables = {

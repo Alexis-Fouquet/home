@@ -13,7 +13,8 @@
         completionInit = "autoload -Uz compinit && compinit -C";
         antidote = {
             enable = true;
-            plugins = [
+            plugins =
+            [
                 "romkatv/powerlevel10k"
                 "getantidote/use-omz"
                 "ohmyzsh/ohmyzsh path:lib"
