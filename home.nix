@@ -14,7 +14,8 @@
     [
         nerd-fonts.jetbrains-mono
         nerd-fonts.fantasque-sans-mono
-        neovim
+        /* For image.nvim */
+        luajitPackages.magick
     ];
     fonts.fontconfig.enable = true;
 
@@ -89,6 +90,11 @@
             userName = "Alexis Fouquet";
             /* Public email for github */
             userEmail = "144385093+Alexis-Fouquet@users.noreply.github.com";
+        };
+        neovim = {
+            enable = true;
+            /* Line from the image.nvim README, needed to run the plugin */
+            extraLuaPackages = ps: [ ps.magick ];
         };
    };
 }
