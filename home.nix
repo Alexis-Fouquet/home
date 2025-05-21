@@ -31,6 +31,12 @@
         EDITOR = "vim";
     };
 
+    home.sessionPath =
+    [
+        /* For Rust */
+        "$HOME/.cargo/bin"
+    ];
+
     programs = {
         home-manager.enable = true;
         fastfetch.enable = true;

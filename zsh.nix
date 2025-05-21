@@ -27,6 +27,8 @@
         };
         initContent =
             let early = lib.mkOrder 500
+            /* Syntax hightlighting */
+            /* sh */
             ''
 alias datenow="date +\"%s,%N\""
 
@@ -45,11 +47,13 @@ fi
 # echo "Start 1"
             '';
             before = lib.mkOrder 550
+            /* sh */
             ''
 # datenow
 # echo "Start 2"
             '';
             after = lib.mkOrder 1000
+            /* sh */
             ''
 # datenow
 if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
