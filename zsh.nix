@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 {
     programs.zsh = {
         enable = true;
@@ -20,6 +20,7 @@
                 "ohmyzsh/ohmyzsh path:lib"
                 "ohmyzsh/ohmyzsh path:plugins/git"
                 "ohmyzsh/ohmyzsh path:plugins/colored-man-pages"
+                "ohmyzsh/ohmyzsh path:plugins/sudo"
                 "zsh-users/zsh-autosuggestions"
                 "zsh-users/zsh-syntax-highlighting kind:defer"
                 "MichaelAquilina/zsh-you-should-use"
@@ -55,12 +56,21 @@ fi
             after = lib.mkOrder 1000
             /* sh */
             ''
-# datenow
 if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
     source ~/.p10k.zsh
     p10k_applied=true
 fi
             '';
-            in lib.mkMerge [early before after];
+            late = lib.mkOrder 1500
+            /* sh */
+            ''
+# datenow
+            '';
+            in lib.mkMerge [
+                early
+                before
+                after
+                late
+            ];
     };
 }
