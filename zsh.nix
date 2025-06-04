@@ -26,11 +26,12 @@
                 "MichaelAquilina/zsh-you-should-use"
             ];
         };
-        initContent =
-            let early = lib.mkOrder 500
-            /* Syntax hightlighting */
-            /* sh */
-            ''
+        initContent = lib.mkMerge [
+                (lib.mkOrder 500
+                 /* Early content */
+                 /* Syntax hightlighting */
+                 /* sh */
+                 ''
 alias datenow="date +\"%s,%N\""
 
 # datenow
@@ -46,31 +47,32 @@ fi
 
 # datenow
 # echo "Start 1"
-            '';
-            before = lib.mkOrder 550
-            /* sh */
-            ''
+                 '')
+/* ------------------------------------------------------------------------- */
+                (lib.mkOrder 550
+                 /* Before */
+                 /* sh */
+                 ''
 # datenow
 # echo "Start 2"
-            '';
-            after = lib.mkOrder 1000
-            /* sh */
-            ''
+                 '')
+/* ------------------------------------------------------------------------- */
+                (lib.mkOrder 1000
+                 /* After */
+                 /* sh */
+                 ''
 if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
     source ~/.p10k.zsh
     p10k_applied=true
 fi
-            '';
-            late = lib.mkOrder 1500
-            /* sh */
-            ''
+                '')
+/* ------------------------------------------------------------------------- */
+                (lib.mkOrder 1500
+                 /* End of file */
+                 /* sh */
+                 ''
 # datenow
-            '';
-            in lib.mkMerge [
-                early
-                before
-                after
-                late
+                 '')
             ];
     };
 }
