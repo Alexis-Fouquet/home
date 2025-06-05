@@ -40,10 +40,6 @@ if [[ -r $INSTANT_PROMPT ]]; then
     source $INSTANT_PROMPT
 fi
 
-if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
-    source ~/.p10k.zsh
-    p10k_applied=true
-fi
 
 # datenow
 # echo "Start 1"
@@ -61,9 +57,8 @@ fi
                  /* After */
                  /* sh */
                  ''
-if [[ ! $1 ]] && [[ -f ~/.p10k.zsh ]]; then
+if [[ -f ~/.p10k.zsh ]]; then
     source ~/.p10k.zsh
-    p10k_applied=true
 fi
                 '')
 /* ------------------------------------------------------------------------- */
