@@ -15,11 +15,10 @@
     };
 
     outputs =
-    { nixpkgs, home-manager, self, neovim-config, ... }:
+    { nixpkgs, home-manager, neovim-config, ... }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        neovimPath = self + "/NeovimConfig";
     in
     {
         homeConfigurations."${builtins.getEnv "USER"}" =
@@ -30,7 +29,6 @@
                 ./zsh.nix
             ];
             extraSpecialArgs = {
-                self = self;
                 neovim-config = neovim-config;
             };
         };
