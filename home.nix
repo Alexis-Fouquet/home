@@ -1,9 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 {
-    imports = [
-        ./zsh.nix
-    ];
-
     /* This configuration should be portable */
     home.username = builtins.getEnv "USER";
     home.homeDirectory = builtins.getEnv "HOME";
@@ -21,7 +17,7 @@
 
     home.file = {
         ".config/nvim" = {
-            source = ./NeovimConfig;
+            source = self + "/NeovimConfig";
             recursive = true;
             enable = true;
         };
