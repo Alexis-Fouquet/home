@@ -8,16 +8,22 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        neovim-config = {
+            url = "git+file:NeovimConfig";
+            flake = false;
+        };
     };
 
     outputs =
-    { nixpkgs, home-manager, self, ... }:
+    { nixpkgs, home-manager, self, neovim-config, ... }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
+        neovimPath = self + "/NeovimConfig";
     in
     {
-        homeConfigurations.alexis = home-manager.lib.homeManagerConfiguration {
+        homeConfigurations."${builtins.getEnv "USER"}" =
+        home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [
                 ./home.nix
@@ -25,6 +31,7 @@
             ];
             extraSpecialArgs = {
                 self = self;
+                neovim-config = neovim-config;
             };
         };
     };

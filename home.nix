@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ pkgs, self, neovim-config, ... }:
 {
     /* This configuration should be portable */
     home.username = builtins.getEnv "USER";
@@ -17,7 +17,7 @@
 
     home.file = {
         ".config/nvim" = {
-            source = self + "/NeovimConfig";
+            source = neovim-config;
             recursive = true;
             enable = true;
         };
