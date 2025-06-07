@@ -9,7 +9,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         neovim-config = {
-            url = "github:Alexis-Fouquet/NoevimConfig";
+            url = "github:Alexis-Fouquet/NeovimConfig";
             flake = false;
         };
     };
