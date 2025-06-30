@@ -12,10 +12,14 @@
             url = "github:Alexis-Fouquet/NeovimConfig";
             flake = false;
         };
+        nixvim = {
+            url = "github:nix-community/nixvim/nixos-25.05";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs =
-    { nixpkgs, home-manager, neovim-config, ... }:
+    { nixpkgs, home-manager, neovim-config, nixvim, ... }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -27,9 +31,11 @@
             modules = [
                 ./home.nix
                 ./zsh.nix
+                ./nixvim.nix
             ];
             extraSpecialArgs = {
                 neovim-config = neovim-config;
+                nixvim = nixvim;
             };
         };
     };
