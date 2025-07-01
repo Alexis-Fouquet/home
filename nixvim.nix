@@ -12,7 +12,10 @@
         };
 
         plugins = {
-            telescope.enable = true;
+            telescope = {
+                enable = true;
+                autoLoad = true;
+            };
 
             web-devicons.enable = true;
 
