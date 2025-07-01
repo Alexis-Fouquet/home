@@ -19,7 +19,7 @@
         ".config/nvim" = {
             source = neovim-config;
             recursive = true;
-            enable = true;
+            enable = false;
         };
     };
 

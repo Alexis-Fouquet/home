@@ -5,7 +5,23 @@
     ];
 
     programs.nixvim = {
-        enable = false;
+        enable = true;
+
+        colorschemes.catppuccin = {
+            enable = true;
+        };
+
+        plugins = {
+            telescope.enable = true;
+
+            web-devicons.enable = true;
+
+            wakatime.enable = true;
+            neo-tree.enable = true;
+
+            notify.enable = true;
+        };
     };
+
 }
 
