@@ -94,7 +94,7 @@
             userEmail = "144385093+Alexis-Fouquet@users.noreply.github.com";
         };
         neovim = {
-            enable = true;
+            enable = false;
             /* Line from the image.nvim README, needed to run the plugin */
             extraLuaPackages = ps: [ ps.magick ];
         };

@@ -1,13 +1,13 @@
 { nixvim, ... }:
 {
     imports = [
-        nixvim.homeModules.nixvim
+        nixvim.homeManagerModules.nixvim
     ];
 
     programs.nixvim = {
         enable = true;
 
-        colorschemes.catppuccin = {
+        colorschemes.tokyonight = {
             enable = true;
         };
 
