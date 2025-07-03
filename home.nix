@@ -10,6 +10,7 @@
     [
         nerd-fonts.jetbrains-mono
         nerd-fonts.fantasque-sans-mono
+        cbonsai
         /* For image.nvim */
         luajitPackages.magick
     ];

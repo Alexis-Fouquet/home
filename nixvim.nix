@@ -24,7 +24,34 @@
             web-devicons.enable = true;
             notify.enable = true;
             smear-cursor.enable = true;
+            /* easymotion.enable = true; */
             lualine.enable = true;
+
+            fugitive.enable = true;
+            gitsigns.enable = true;
+
+            obsidian.enable = false;
+            vimwiki.enable = false;
+            render-markdown.enable = false;
+
+            nvim-autopairs.enable = true;
+
+            nui.enable = true;
+            treesitter.enable = true;
+
+            image.enable = true;
+
+            lspconfig.enable = true;
+            /* mason-lspconfig.enable = true; */
+            /* mason.enable = true; */
+
+            cmp.enable = true;
+            cmp-nvim-lsp.enable = true;
+            cmp-buffer.enable = true;
+            cmp-path.enable = true;
+            cmp-cmdline.enable = true;
+            cmp-calc.enable = true;
+            lspkind.enable = true;
         };
 
         opts = {
@@ -50,6 +77,19 @@
             listchars = {
                 tab = ">~";
                 trail = "~";
+            };
+
+            splitbelow = true;
+            splitright = true;
+        };
+
+        lsp = {
+            inlayHints.enable = false;
+
+            servers = {
+                nixd.enable = true;
+                clangd.enable = true;
+                rust_analyser.enable = true;
             };
         };
     };
