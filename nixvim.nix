@@ -45,12 +45,17 @@
             /* mason-lspconfig.enable = true; */
             /* mason.enable = true; */
 
-            cmp.enable = true;
-            cmp-nvim-lsp.enable = true;
-            cmp-buffer.enable = true;
-            cmp-path.enable = true;
-            cmp-cmdline.enable = true;
-            cmp-calc.enable = true;
+            cmp = {
+                enable = true;
+                autoEnableSources = true;
+                settings.sources = [
+                    { name = "nvim_lsp"; }
+                    { name = "path"; }
+                    { name = "buffer"; }
+                    { name = "cmdline"; }
+                    { name = "calc"; }
+                ];
+            };
             lspkind.enable = true;
         };
 
