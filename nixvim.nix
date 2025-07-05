@@ -1,4 +1,4 @@
-{ nixvim, ... }:
+{ nixvim, lib, ... }:
 {
     imports = [
         nixvim.homeManagerModules.nixvim
@@ -118,12 +118,65 @@
                 clangd.enable = true;
                 rust_analyser.enable = true;
             };
+
+            /* Some of them are directly from the documentation */
+            keymaps = [
+            {
+                key = "gd";
+                lspBufAction = "definition";
+            }
+            {
+                key = "gD";
+                lspBufAction = "references";
+            }
+            {
+                key = "gt";
+                lspBufAction = "type_definition";
+            }
+            {
+                key = "gi";
+                lspBufAction = "implementation";
+            }
+            {
+                key = "gK";
+                lspBufAction = "hover";
+            }
+            {
+                action =
+                    lib.nixvim.mkRaw
+                    "function() vim.diagnostic.jump({ count=-1, float=true }) end";
+                key = "<leader>k";
+            }
+            {
+                action =
+                    lib.nixvim.mkRaw
+                    "function() vim.diagnostic.jump({ count=1, float=true }) end";
+                key = "<leader>j";
+            }
+            ];
+        };
+
+        diagnostic.settings = {
+            virtual_lines = {
+                current_line = true;
+            };
+
+            virtual_text = true;
         };
 
         performance = {
             byteCompileLua.enable = true;
             combinePlugins.enable = true;
         };
+
+        globals.mapleader = " ";
+
+        keymaps = [
+            {
+                action = ":Telescope";
+                key = "<leader><leader>";
+            }
+        ];
     };
 }
 
