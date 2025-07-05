@@ -12,10 +12,18 @@
         };
 
         plugins = {
-            which-key.enable = true;
+            lz-n.enable = true;
+
+            which-key = {
+                enable = true;
+                lazyLoad.settings.event = "DeferredUIEnter";
+            };
             telescope = {
                 enable = true;
                 extensions.fzf-native.enable = true;
+                lazyLoad.settings = {
+                    cmd = "Telescope";
+                };
             };
 
             wakatime.enable = true;
@@ -24,17 +32,33 @@
             web-devicons.enable = true;
             notify.enable = true;
             smear-cursor.enable = true;
-            /* easymotion.enable = true; */
             lualine.enable = true;
 
-            fugitive.enable = true;
+            fugitive = {
+                enable = true;
+            };
             gitsigns.enable = true;
 
-            obsidian.enable = false;
-            vimwiki.enable = false;
-            render-markdown.enable = false;
+            obsidian = {
+                enable = false;
+                lazyLoad.settings = {
+                    ft = "md";
+                };
+            };
+            vimwiki = {
+                enable = false;
+            };
+            render-markdown = {
+                enable = false;
+                lazyLoad.settings = {
+                    ft = "md";
+                };
+            };
 
-            nvim-autopairs.enable = true;
+            nvim-autopairs = {
+                enable = true;
+                lazyLoad.settings.event = "BufEnter";
+            };
 
             nui.enable = true;
             treesitter.enable = true;
@@ -42,8 +66,6 @@
             image.enable = true;
 
             lspconfig.enable = true;
-            /* mason-lspconfig.enable = true; */
-            /* mason.enable = true; */
 
             cmp = {
                 enable = true;
@@ -96,6 +118,11 @@
                 clangd.enable = true;
                 rust_analyser.enable = true;
             };
+        };
+
+        performance = {
+            byteCompileLua.enable = true;
+            combinePlugins.enable = true;
         };
     };
 }
