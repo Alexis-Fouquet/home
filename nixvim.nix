@@ -1,4 +1,4 @@
-{ nixvim, ... }:
+{ nixvim, lib, ... }:
 {
     imports = [
         nixvim.homeManagerModules.nixvim
@@ -22,7 +22,9 @@
                 enable = true;
                 extensions.fzf-native.enable = true;
                 lazyLoad.settings = {
-                    cmd = "Telescope";
+                    cmd = [
+                    "Telescope"
+                    ];
                 };
             };
 
@@ -70,13 +72,131 @@
             cmp = {
                 enable = true;
                 autoEnableSources = true;
-                settings.sources = [
+                settings = {
+                    sources = [
                     { name = "nvim_lsp"; }
                     { name = "path"; }
                     { name = "buffer"; }
-                    /* { name = "cmdline"; } */
                     { name = "calc"; }
-                ];
+                    ];
+
+                    mapping = {
+                        "<C-Space>" = "cmp.mapping.complete()";
+                        "<S-Tab>" =
+                            /* lua */
+                            ''
+                            cmp.mapping(function (fallback)
+                                if cmp.visible() then
+                                    cmp.select_next_item({
+                                        behavior = cmp.SelectBehavior.Select
+                                    })
+                                else
+                                    fallback()
+                                end
+                            end, {'i', 's', 'c'})
+                            '';
+                        "<C-e>" = "cmp.mapping.abort()";
+                        "<Tab>" =
+                            /* lua */
+                            ''
+                            cmp.mapping(function(fallback)
+                                -- From the wiki
+                                if cmp.visible() then
+                                    local entry = cmp.get_selected_entry()
+                                    if not entry then
+                                        cmp.select_next_item({
+                                            behavior = cmp.SelectBehavior.Select
+                                        })
+                                    end
+                                    cmp.confirm()
+                                else
+                                    fallback()
+                                end
+                            end, {'i','s','c',})
+                            '';
+                    };
+
+                    window = {
+                        __raw =
+                            /* lua */
+                            ''
+                            {
+                                completion = cmp.config.window.bordered(),
+                                documentation = cmp.config.window.bordered(),
+                            }
+                            '';
+                        completion = {
+                            __raw =
+                                nixvim.lib.nixvim.mkRaw
+                                "cmp.config.window.bordered()";
+                        };
+                        documentation.border = [
+                            "/"
+                            "-"
+                            "\\"
+                            "|"
+                        ];
+                    };
+
+                    snippet.expand =
+                        /* lua */
+                        ''
+                        function(args)
+                            vim.snippet.expand(args.body)
+                        end
+                        '';
+
+                    formatting = {
+                        fields = [
+                            "kind"
+                            "abbr"
+                            "menu"
+                        ];
+                        format =
+                            /* lua */
+                            lib.mkForce ''
+                            function(entry, vim_item)
+                                local kind = require("lspkind")
+                                    .cmp_format({
+                                        mode = "symbol_text",
+                                        maxwidth = 60,
+                                    })(entry, vim_item)
+                                local strings = vim.split(
+                                    kind.kind,
+                                    "%s",
+                                    { trimempty = true }
+                                )
+                                kind.kind = " " .. (strings[1] or "") .. " "
+                                kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+                                return kind
+                            end
+                            '';
+                    };
+
+                };
+                cmdline = {
+                    "/" = {
+                        sources = [
+                        { name = "buffer"; }
+                        ];
+                    };
+                    ":" = {
+                        sources = [
+                        { name = "path"; }
+                        { name = "cmdline"; }
+                        ];
+                    };
+                };
+
+                # luaConfig.post =
+                #     /* lua */
+                #     ''
+                #     cmp.setup.window({
+                #         completion = cmp.config.window.bordered(),
+                #         documentation = cmp.config.window.bordered(),
+                #     })
+                #     '';
             };
             lspkind.enable = true;
         };
@@ -164,17 +284,21 @@
         };
 
         performance = {
-            byteCompileLua.enable = true;
+            byteCompileLua.enable = false;
             combinePlugins.enable = true;
         };
 
         globals.mapleader = " ";
 
         keymaps = [
-            {
-                action = ":Telescope";
-                key = "<leader><leader>";
-            }
+        {
+            action = ":Telescope find_files<CR>";
+            key = "<leader><leader>";
+        }
+        {
+            action = ":Telescope live_grep<CR>";
+            key = "<leader>g";
+        }
         ];
     };
 }
