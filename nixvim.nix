@@ -116,7 +116,9 @@
             servers = {
                 nixd.enable = true;
                 clangd.enable = true;
-                rust_analyser.enable = true;
+                rust_analyzer = {
+                    enable = true;
+                };
             };
 
             /* Some of them are directly from the documentation */
