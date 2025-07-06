@@ -263,7 +263,10 @@
             }
             {
                 key = "gD";
-                lspBufAction = "references";
+                lspBufAction =
+                    nixvim.lib.nixvim.mkRaw
+                    /* lua */
+                    "require('telescope.builtin').lsp_references";
             }
             {
                 key = "gt";
@@ -280,12 +283,14 @@
             {
                 action =
                     nixvim.lib.nixvim.mkRaw
+                    /* lua */
                     "function() vim.diagnostic.jump({ count=-1, float=true }) end";
                 key = "<leader>k";
             }
             {
                 action =
                     nixvim.lib.nixvim.mkRaw
+                    /* lua */
                     "function() vim.diagnostic.jump({ count=1, float=true }) end";
                 key = "<leader>j";
             }
