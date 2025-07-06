@@ -263,7 +263,7 @@
             }
             {
                 key = "gD";
-                lspBufAction =
+                action =
                     nixvim.lib.nixvim.mkRaw
                     /* lua */
                     "require('telescope.builtin').lsp_references";
