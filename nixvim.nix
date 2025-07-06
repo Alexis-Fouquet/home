@@ -1,4 +1,4 @@
-{ nixvim, lib, ... }:
+{ nixvim, lib, pkgs, ... }:
 {
     imports = [
         nixvim.homeManagerModules.nixvim
@@ -63,7 +63,21 @@
             };
 
             nui.enable = true;
-            treesitter.enable = true;
+            treesitter = {
+                enable = true;
+
+                grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+                    rust
+                    lua
+                    nix
+                    markdown
+                    markdown_inline
+                ];
+
+                settings = {
+                    highlight.enable = true;
+                };
+            };
 
             image.enable = true;
 
