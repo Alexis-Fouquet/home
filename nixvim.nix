@@ -284,7 +284,7 @@
         };
 
         performance = {
-            byteCompileLua.enable = false;
+            byteCompileLua.enable = true;
             combinePlugins.enable = true;
         };
 
