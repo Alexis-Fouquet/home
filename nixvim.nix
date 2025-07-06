@@ -1,4 +1,4 @@
-{ nixvim, lib, ... }:
+{ nixvim, ... }:
 {
     imports = [
         nixvim.homeManagerModules.nixvim
@@ -74,7 +74,7 @@
                     { name = "nvim_lsp"; }
                     { name = "path"; }
                     { name = "buffer"; }
-                    { name = "cmdline"; }
+                    /* { name = "cmdline"; } */
                     { name = "calc"; }
                 ];
             };
@@ -143,13 +143,13 @@
             }
             {
                 action =
-                    lib.nixvim.mkRaw
+                    nixvim.lib.nixvim.mkRaw
                     "function() vim.diagnostic.jump({ count=-1, float=true }) end";
                 key = "<leader>k";
             }
             {
                 action =
-                    lib.nixvim.mkRaw
+                    nixvim.lib.nixvim.mkRaw
                     "function() vim.diagnostic.jump({ count=1, float=true }) end";
                 key = "<leader>j";
             }
@@ -157,10 +157,7 @@
         };
 
         diagnostic.settings = {
-            virtual_lines = {
-                current_line = true;
-            };
-
+            virtual_lines = false;
             virtual_text = true;
         };
 
