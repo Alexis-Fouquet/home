@@ -72,6 +72,7 @@
                     nix
                     markdown
                     markdown_inline
+                    latex
                 ];
 
                 settings = {
@@ -250,9 +251,8 @@
             servers = {
                 nixd.enable = true;
                 clangd.enable = true;
-                rust_analyzer = {
-                    enable = true;
-                };
+                rust_analyzer.enable = true;
+                texlab.enable = true;
             };
 
             /* Some of them are directly from the documentation */
