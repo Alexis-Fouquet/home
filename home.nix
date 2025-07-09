@@ -1,4 +1,4 @@
-{ pkgs, self, neovim-config, ... }:
+{ pkgs, neovim-config, ... }:
 {
     /* This configuration should be portable */
     home.username = builtins.getEnv "USER";
@@ -93,6 +93,9 @@
             userName = "Alexis Fouquet";
             /* Public email for github */
             userEmail = "144385093+Alexis-Fouquet@users.noreply.github.com";
+            signing = {
+                format = "ssh";
+            };
         };
         neovim = {
             enable = false;
