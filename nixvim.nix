@@ -318,6 +318,10 @@
             action = ":Telescope live_grep<CR>";
             key = "<leader>g";
         }
+        {
+            action = ":make";
+            key = "<leader>m";
+        }
         ];
     };
 }
