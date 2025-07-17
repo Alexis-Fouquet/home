@@ -33,11 +33,22 @@
 
             web-devicons.enable = true;
             notify.enable = true;
-            smear-cursor.enable = true;
+            smear-cursor = {
+                enable = true;
+                lazyLoad.settings.event = "BufEnter";
+            };
             lualine.enable = true;
 
             fugitive = {
                 enable = true;
+                /* LazyLoad not yet implemented for this plugin */
+                /*
+                lazyLoad.settings = {
+                    cmd = [
+                    "Git"
+                    ];
+                };
+                */
             };
             gitsigns.enable = true;
 
@@ -49,6 +60,12 @@
             };
             vimwiki = {
                 enable = false;
+                /* LazyLoad not yet implemented for this plugin */
+                /*
+                lazyLoad.settings = {
+                    ft = "md";
+                };
+                */
             };
             render-markdown = {
                 enable = false;
@@ -62,7 +79,6 @@
                 lazyLoad.settings.event = "BufEnter";
             };
 
-            nui.enable = true;
             treesitter = {
                 enable = true;
 
@@ -80,7 +96,10 @@
                 };
             };
 
-            image.enable = true;
+            image = {
+                enable = true;
+                lazyLoad.settings.event = "DeferredUIEnter";
+            };
 
             lspconfig.enable = true;
 
@@ -204,16 +223,14 @@
                     };
                 };
 
-                # luaConfig.post =
-                #     /* lua */
-                #     ''
-                #     cmp.setup.window({
-                #         completion = cmp.config.window.bordered(),
-                #         documentation = cmp.config.window.bordered(),
-                #     })
-                #     '';
+                /* Was not a good idea */
+                /* lazyLoad.settings.event = "BufEnter"; */
             };
-            lspkind.enable = true;
+            lspkind = {
+                enable = true;
+                /* LazyLoad not yet implemented for this plugin */
+                /* lazyLoad.settings.event = "BufEnter"; */
+            };
         };
 
         opts = {
