@@ -1,10 +1,15 @@
-{ pkgs, neovim-config, ... }:
+{ pkgs, lib, neovim-config, ... }:
 {
     /* This configuration should be portable */
     home.username = builtins.getEnv "USER";
     home.homeDirectory = builtins.getEnv "HOME";
     /* Should not change */
     home.stateVersion = "24.11";
+
+    imports = lib.optionals (builtins.getEnv "HOME" == "/home/alexisf")
+    [
+    ./nixos/main.nix
+    ];
 
     home.packages = with pkgs;
     [
