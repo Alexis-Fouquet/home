@@ -87,6 +87,8 @@
                 selection_background = "none";
 
                 background = "#000000";
+
+                shell = "zsh";
             };
         };
         git = {

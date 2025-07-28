@@ -4,6 +4,8 @@
         nixvim.homeManagerModules.nixvim
     ];
 
+    programs.ripgrep.enable = true;
+
     programs.nixvim = {
         enable = true;
 
