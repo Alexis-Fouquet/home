@@ -45,7 +45,6 @@
 
         exec-once = [
             "$terminal --hold zsh -c \"cbonsai -lim \"Hello!\"\""
-            "waybar"
         ];
 
         input = {
