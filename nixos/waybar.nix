@@ -3,6 +3,8 @@
     programs.waybar = {
         enable = true;
         systemd.enable = true;
+        /* Debug only */
+        systemd.enableInspect = false;
     };
 
     programs.waybar.settings.mainBar = {
@@ -11,16 +13,17 @@
 
         modules-left = [
         "hyprland/workspaces"
+        "hyprland/window"
         "hyprland/submap"
         ];
 
         modules-center = [
         "idle_inhibitor"
-        "hyprland/window"
+        "keyboard-state"
         ];
 
         modules-right = [
-        "mdp"
+        "mpd"
         "pulseaudio"
         "network"
         "cpu"
@@ -31,4 +34,6 @@
         "tray"
         ];
     };
+
+    programs.waybar.style = ./waybar-style.css;
 }
