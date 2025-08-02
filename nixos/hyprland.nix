@@ -10,6 +10,8 @@ in {
     [
     wofi
     nautilus
+    hyprpicker
+    overskride
     ];
 
     services.hyprpaper.enable = true;

@@ -32,6 +32,7 @@
         "battery"
         "clock"
         "tray"
+        "bluetooth"
         ];
     };
 
