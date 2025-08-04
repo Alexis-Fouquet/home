@@ -273,7 +273,12 @@
                 clangd.enable = true;
                 rust_analyzer.enable = true;
                 texlab.enable = true;
-                ruff.enable = true;
+
+                /* Testing python */
+                ruff.enable = false;
+                pylsp.enable = false;
+                /* With a z this is better */
+                pylyzer.enable = true;
             };
 
             /* Some of them are directly from the documentation */
