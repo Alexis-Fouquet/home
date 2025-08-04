@@ -91,6 +91,7 @@
                     markdown
                     markdown_inline
                     latex
+                    python
                 ];
 
                 settings = {
@@ -272,6 +273,7 @@
                 clangd.enable = true;
                 rust_analyzer.enable = true;
                 texlab.enable = true;
+                ruff.enable = true;
             };
 
             /* Some of them are directly from the documentation */
