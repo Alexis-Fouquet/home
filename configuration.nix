@@ -3,7 +3,7 @@
     /* Generated from the installer and edited after */
     imports =
         [
-        /* Impure - generated per computer */
+        /* Impure - generated per computer - impure even with a symlink */
         ./hardware-configuration.nix
         ];
 
