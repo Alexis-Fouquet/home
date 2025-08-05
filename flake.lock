@@ -88,22 +88,6 @@
         "type": "github"
       }
     },
-    "neovim-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1749465537,
-        "narHash": "sha256-oAmn983jNmPaivl74zv35oe4FA231l1pSG6JBKsYo8Y=",
-        "owner": "Alexis-Fouquet",
-        "repo": "NeovimConfig",
-        "rev": "eed887bace11db393dc8293b1c56200d7f5a677c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Alexis-Fouquet",
-        "repo": "NeovimConfig",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754028485,
@@ -170,7 +154,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "neovim-config": "neovim-config",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
       }

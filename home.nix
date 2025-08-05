@@ -1,12 +1,12 @@
-{ pkgs, lib, neovim-config, ... }:
+{ pkgs, lib, username, userpath, on-nixos, ... }:
 {
     /* This configuration should be portable */
-    home.username = builtins.getEnv "USER";
-    home.homeDirectory = builtins.getEnv "HOME";
+    home.username = username;
+    home.homeDirectory = userpath;
     /* Should not change */
     home.stateVersion = "24.11";
 
-    imports = lib.optionals (builtins.getEnv "HOME" == "/home/alexisf")
+    imports = lib.optionals on-nixos
     [
     ./nixos/main.nix
     ];
@@ -21,14 +21,6 @@
         luajitPackages.magick
     ];
     fonts.fontconfig.enable = true;
-
-    home.file = {
-        ".config/nvim" = {
-            source = neovim-config;
-            recursive = true;
-            enable = false;
-        };
-    };
 
     home.sessionVariables = {
         EDITOR = "vim";
