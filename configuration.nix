@@ -4,7 +4,7 @@
     imports =
         [
         /* Impure - generated per computer */
-        /etc/nixos/hardware-configuration.nix
+        ./hardware-configuration.nix
         ];
 
     /* Enable bluetooth */
