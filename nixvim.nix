@@ -278,7 +278,8 @@
                 ruff.enable = false;
                 pylsp.enable = false;
                 /* With a z this is better */
-                pylyzer.enable = true;
+                pylyzer.enable = false;
+                pyright.enable = true;
             };
 
             /* Some of them are directly from the documentation */
