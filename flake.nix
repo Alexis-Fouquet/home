@@ -12,21 +12,28 @@
             url = "github:nix-community/nixvim/nixos-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     };
 
     outputs =
-    { nixpkgs, home-manager, nixvim, ... }:
+    { nixpkgs, home-manager, nixvim, nix-flatpak, ... }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
+        extra = {username, userpath, on-nixos}: {
+                nixvim = nixvim;
+                flatpak = nix-flatpak;
+                username = username;
+                userpath = userpath;
+                on-nixos = on-nixos;
+        };
         home = {username, userpath, on-nixos}:
         home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [
             ./home-index.nix
             ];
-            extraSpecialArgs = {
-                nixvim = nixvim;
+            extraSpecialArgs = extra {
                 username = username;
                 userpath = userpath;
                 on-nixos = on-nixos;
@@ -39,12 +46,12 @@
             modules = [
                 ./configuration.nix
 
+                nix-flatpak.nixosModules.nix-flatpak
                 home-manager.nixosModules.home-manager {
                     home-manager = {
                         useGlobalPkgs = true;
                         useUserPackages = true;
-                        extraSpecialArgs = {
-                            nixvim = nixvim;
+                        extraSpecialArgs = extra {
                             username = "alexisf";
                             userpath = "/home/alexisf";
                             on-nixos = true;

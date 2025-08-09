@@ -5,6 +5,7 @@
         [
         /* Impure - generated per computer - impure even with a symlink */
         ./hardware-configuration.nix
+        ./flatpak.nix
         ];
 
     /* Enable bluetooth */
@@ -77,6 +78,8 @@
     programs.hyprland.enable = true;
     programs.hyprlock.enable = true;
     services.hypridle.enable = true;
+
+    services.flatpak.enable = true;
 
     environment.systemPackages = with pkgs; [
         vim
