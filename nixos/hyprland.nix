@@ -2,7 +2,7 @@
 let mod = "SUPER";
 alt = "SHIFT";
 alt2 = "CTRL";
-browser = "firefox";
+browser = "flatpak run app.zen_browser.zen";
 terminal = "kitty";
 drun = "wofi --show drun";
 in {
