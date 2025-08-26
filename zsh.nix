@@ -9,6 +9,7 @@
             ":q" = "exit";
             cat = "bat";
             icat = "kitten icat";
+            dev = "nix develop -c zsh";
         };
         completionInit = "autoload -Uz compinit && compinit -C";
         antidote = {

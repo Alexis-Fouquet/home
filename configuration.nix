@@ -72,10 +72,7 @@
         isNormalUser = true;
         description = "Alexis Fouquet";
         extraGroups = [ "networkmanager" "wheel" ];
-        shell = pkgs.zsh;
     };
-
-    programs.zsh.enable = true;
 
     programs.firefox.enable = true;
     programs.hyprland.enable = true;
