@@ -34,6 +34,37 @@
         "tray"
         "bluetooth"
         ];
+
+        keyboard-state = {
+            numlock = true;
+            capslock = true;
+            format = "{name} {icon}";
+            format-icons = {
+                locked = "";
+                unlocked = "";
+            };
+        };
+
+        idle_inhibitor = {
+            format = "{icon}";
+            format-icons = {
+                activated = "";
+                deactivated = "";
+            };
+        };
+
+        cpu = {
+            format = " {usage}%";
+            tooltip = false;
+        };
+
+        memory = {
+            format = " {}%";
+        };
+
+        battery = {
+
+        };
     };
 
     programs.waybar.style = ./waybar-style.css;

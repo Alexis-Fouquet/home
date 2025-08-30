@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
     imports = [
     ./hyprland.nix
@@ -8,10 +8,7 @@
 
     /* Notifications */
     services.swaync.enable = true;
-    home.packages = with pkgs;
-    [
-    libnotify
-    ];
+    /* libnotify is placed in configuration.nix */
 
     /* Wifi - use nmcli / nmtui otherwise */
     services.network-manager-applet.enable = true;

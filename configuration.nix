@@ -77,7 +77,10 @@
     programs.firefox.enable = true;
     programs.hyprland.enable = true;
     programs.hyprlock.enable = true;
-    services.hypridle.enable = true;
+
+    systemd.services.hypridle = {
+        path = [ pkgs.libnotify ];
+    };
 
     services.flatpak.enable = true;
 
@@ -85,6 +88,7 @@
         vim
         git
         gnumake
+        libnotify
     ];
 
     system.stateVersion = "25.05"; /* Did you read the comment? Yes */

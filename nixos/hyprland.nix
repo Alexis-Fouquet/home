@@ -23,8 +23,6 @@ in {
     };
 
     wayland.windowManager.hyprland.settings = {
-        "$menu" = "wofi --show drun";
-
         binds = {
             drag_threshold = 5;
             /* Allows to go to recently used workspaces. */
