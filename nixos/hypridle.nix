@@ -1,9 +1,11 @@
 { ... }:
+/* libnotify added to path of user service in configuration.nix */
+let notify = name: description: "notify-send \"${name}\" \"${description}\"";
+in
 {
     services.hypridle = {
         enable = true;
     };
-
 
     services.hypridle.settings.general = {
         ignore_dbus_inhibit = false;
@@ -13,23 +15,14 @@
 
     services.hypridle.settings.listener = [
     {
-        timeout = 5;
-        on-timeout = "notify-send \"Timeout\" >> ~/logidle.log 2>&1";
-        on-resume = "notify-send \"Resume\" >> ~/logidle.log 2>&1";
-    }
-    {
-        timeout = 10;
-        on-timeout = "echo \"Timeout\" >> ~/logidle.log";
-        on-resume = "echo \"Resume\" >> ~/logidle.log";
-    }
-    {
-        timeout = 15;
-        on-timeout = "echo $PATH >> ~/logidle.log";
+        timeout = 300;
+        on-timeout = notify "Idle" "Idle detected, timeout 300";
+        on-resume = notify "Idle" "Idle resumed";
     }
     {
         timeout = 600;
         on-timeout = "hyprlock";
-        on-resume = "notify-send \"Unlocked\" \"Was locked by hypridle (timeout 600)\"";
+        on-resume = notify "Unlocked" "Was locked by hypridle (timeout 600)";
     }
     {
         timeout = 660;

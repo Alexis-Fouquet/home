@@ -78,7 +78,8 @@
     programs.hyprland.enable = true;
     programs.hyprlock.enable = true;
 
-    systemd.services.hypridle = {
+    /* Should restart after editing this */
+    systemd.user.services.hypridle = {
         path = [ pkgs.libnotify ];
     };
 
