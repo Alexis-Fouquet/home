@@ -11,15 +11,16 @@ let baseBatteryInfo = "{icon} {capacity}%"; in
     programs.waybar.settings.mainBar = {
         height = 35;
         spacing = 5;
+        margin = "5";
 
         modules-left = [
+        "idle_inhibitor"
         "hyprland/workspaces"
         "hyprland/window"
         "hyprland/submap"
         ];
 
         modules-center = [
-        "idle_inhibitor"
         "keyboard-state"
         ];
 
