@@ -8,7 +8,6 @@ full: update
 # impure as it is using a configuration file located in another folder
 reload-os:
 	nixos-rebuild switch --flake . --impure --use-remote-sudo
-	echo "-- Reload --" >> ~/logidle.log
 
 reload-home:
 	home-manager switch --impure

@@ -5,6 +5,7 @@ alt2 = "CTRL";
 browser = "flatpak run app.zen_browser.zen";
 terminal = "kitty";
 drun = "wofi --show drun";
+toggleNotifications = "swaync-client -t -sw";
 in {
     home.packages = with pkgs;
     [
@@ -49,6 +50,8 @@ in {
 
         "${mod}, E, exit,"
         "${mod}, A, hyprexpo:expo, toggle"
+
+        "${mod}, N, exec, ${toggleNotifications}"
         ]
         ++ (
                 /* Half from the Hyprland documentation about Nix */
