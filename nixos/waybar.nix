@@ -1,4 +1,5 @@
 { ... }:
+let baseBatteryInfo = "{icon} {capacity}%"; in
 {
     programs.waybar = {
         enable = true;
@@ -63,7 +64,51 @@
         };
 
         battery = {
+            states = {
+                /* Good and normal are used to hide when the battery is high */
+                good = 100;
+                normal = 80;
+                warning = 20;
+                critical = 10;
+            };
+            format = baseBatteryInfo;
+            format-good = ""; # hide
+            format-normal = baseBatteryInfo; # just in case
+            format-warning = baseBatteryInfo;
+            format-full = "";
+            format-charging = "${baseBatteryInfo} {time}";
+            format-plugged = "";
+            format-icons = ["" "" "" "" ""];
+        };
 
+        pulseaudio = {
+            /* Mainly from the wiki */
+            format = "{icon} {volume}% {format_source}";
+            format-bluetooth = "{icon} {volume}% {format_source}";
+            format-bluetooth-muted = "{icon} X {format_source}";
+            format-muted = "X {format_source}";
+            format-source = " {volume}%";
+            format-source-muted = "";
+            format-icons = {
+                headphone = "";
+                hands-free = "";
+                headset = "";
+                phone = "";
+                portable = "";
+                default = ["" "" ""];
+            };
+        };
+
+        network = {
+            format-wifi = " {essid} ({signalStrength}%)";
+            format-ethernet = "E {ipaddr}/{cidr}";
+            tooltip-format = "{ifname} via {gwaddr}";
+            format-linked = "L {ifname} (No IP)";
+            format-disconnected = "⚠ Disconnected";
+        };
+
+        temperature = {
+            format = " {temperatureC}°C";
         };
     };
 
