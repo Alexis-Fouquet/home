@@ -26,6 +26,7 @@
         asciinema
         /* For image.nvim */
         luajitPackages.magick
+        libqalculate
     ];
     fonts.fontconfig.enable = true;
 
@@ -44,6 +45,7 @@
         fastfetch.enable = true;
         lazygit.enable = true;
         bat.enable = true;
+        btop.enable = true;
         fzf = {
             enable = true;
             enableZshIntegration = true;
