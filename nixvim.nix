@@ -75,6 +75,7 @@
                     ft = "markdown";
                 };
             };
+            vimtex.enable = true;
 
             nvim-snippets = {
                 enable = true;
