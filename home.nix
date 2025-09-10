@@ -27,6 +27,7 @@
         /* For image.nvim */
         luajitPackages.magick
         libqalculate
+        dict
     ];
     fonts.fontconfig.enable = true;
 

@@ -113,6 +113,10 @@ in {
         "workspaces, 1, 2, default, slidefade"
         "windows, 1, 4, default, slide"
         ];
+
+        general = {
+            gaps_out = 5;
+        };
     };
 
     wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins;

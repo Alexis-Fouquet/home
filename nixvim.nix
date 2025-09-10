@@ -55,13 +55,17 @@
             gitsigns.enable = true;
 
             obsidian = {
-                enable = false;
+                enable = true;
                 lazyLoad.settings = {
                     ft = "md";
                 };
             };
             vimwiki = {
+                /* Breaks everything by changing the filetype */
                 enable = false;
+                settings = {
+                    filetypes = [ "markdown" ];
+                };
                 /* LazyLoad not yet implemented for this plugin */
                 /*
                 lazyLoad.settings = {
