@@ -89,7 +89,7 @@
                         markdown = [ "tex" "latex" ];
                     };
                     */
-                    friendly_snippets = true;
+                    friendly_snippets = false;
                     create_cmp_source = true;
                 };
             };
@@ -107,7 +107,7 @@
              */
 
             friendly-snippets = {
-                enable = true;
+                enable = false;
             };
 
             nvim-autopairs = {
