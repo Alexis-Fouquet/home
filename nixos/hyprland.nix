@@ -12,9 +12,10 @@ in {
     wofi
     nautilus
     hyprpicker
-    overskride
+    blueman
     hyprshot
     obsidian
+    bluetui
     ];
 
     services.hyprpaper.enable = true;
