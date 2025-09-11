@@ -4,6 +4,7 @@
     ./hyprland.nix
     ./waybar.nix
     ./hypridle.nix
+    ./home.nix
     ];
 
     /* Notifications */

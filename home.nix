@@ -20,14 +20,10 @@
 
     home.packages = with pkgs;
     [
-        nerd-fonts.jetbrains-mono
         nerd-fonts.fantasque-sans-mono
-        cbonsai
         asciinema
         /* For image.nvim */
         luajitPackages.magick
-        libqalculate
-        dict
         /* python313Packages.pylatexenc */
     ];
     fonts.fontconfig.enable = true;
@@ -45,9 +41,7 @@
     programs = {
         home-manager.enable = true;
         fastfetch.enable = true;
-        lazygit.enable = true;
         bat.enable = true;
-        btop.enable = true;
         fzf = {
             enable = true;
             enableZshIntegration = true;
