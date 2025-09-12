@@ -70,10 +70,25 @@
                 */
             };
             render-markdown = {
-                enable = false;
+                enable = true;
                 lazyLoad.settings = {
-                    ft = "md";
+                    ft = "markdown";
                 };
+            };
+
+            nvim-snippets = {
+                enable = true;
+                settings = {
+                    extended_filetypes = {
+                        markdown = [ "tex" "latex" ];
+                    };
+                    friendly_snippets = true;
+                    create_cmp_source = true;
+                };
+            };
+
+            friendly-snippets = {
+                enable = true;
             };
 
             nvim-autopairs = {
@@ -115,6 +130,7 @@
                     { name = "path"; }
                     { name = "buffer"; }
                     { name = "calc"; }
+                    { name = "snippets"; }
                     ];
 
                     mapping = {
@@ -350,6 +366,11 @@
             key = "<leader>m";
         }
         ];
+
+        extraConfigLua =
+        /* lua */
+        ''
+        '';
     };
 }
 

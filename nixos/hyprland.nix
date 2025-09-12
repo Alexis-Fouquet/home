@@ -13,6 +13,7 @@ in {
     nautilus
     hyprpicker
     overskride
+    hyprshot
     ];
 
     services.hyprpaper.enable = true;
@@ -52,6 +53,8 @@ in {
         "${mod}, A, hyprexpo:expo, toggle"
 
         "${mod}, N, exec, ${toggleNotifications}"
+
+        "${mod}, S, exec, hyprshot -m region"
         ]
         ++ (
                 /* Half from the Hyprland documentation about Nix */
