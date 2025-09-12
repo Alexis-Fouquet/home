@@ -87,6 +87,18 @@
                 };
             };
 
+            /*
+            luasnip = {
+                enable = false;
+                filetypeExtend = {
+                    markdown = [
+                    "tex"
+                    "latex"
+                    ];
+                };
+            };
+             */
+
             friendly-snippets = {
                 enable = true;
             };
@@ -131,6 +143,7 @@
                     { name = "buffer"; }
                     { name = "calc"; }
                     { name = "snippets"; }
+                    /* { name = "luasnip"; } */
                     ];
 
                     mapping = {
@@ -206,8 +219,9 @@
                             "menu"
                         ];
                         format =
+                            lib.mkForce
                             /* lua */
-                            lib.mkForce ''
+                            ''
                             function(entry, vim_item)
                                 local kind = require("lspkind")
                                     .cmp_format({
@@ -348,6 +362,9 @@
         performance = {
             byteCompileLua.enable = true;
             combinePlugins.enable = true;
+            combinePlugins.standalonePlugins = [
+            "friendly-snippets"
+            ];
         };
 
         globals.mapleader = " ";
