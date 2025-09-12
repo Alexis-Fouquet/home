@@ -14,6 +14,7 @@ in {
     hyprpicker
     overskride
     hyprshot
+    obsidian
     ];
 
     services.hyprpaper.enable = true;

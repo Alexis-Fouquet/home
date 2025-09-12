@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
     /* Generated from the installer and edited after */
     imports =
@@ -98,4 +98,12 @@
         automatic = true;
         dates = "weekly";
     };
+
+    nixpkgs.config.allowUnfreePredicate = p:
+    builtins.elem (lib.getName p) [
+    "obsidian"
+    ];
+
+    /* TODO: find a way to add this in the dev flake */
+    virtualisation.docker.enable = true;
 }
