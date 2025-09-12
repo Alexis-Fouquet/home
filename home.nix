@@ -11,6 +11,13 @@
     ./nixos/main.nix
     ];
 
+    home.file = {
+        "${userpath}/.config/nvim/snippets" = {
+            source = ./nixvim/snippets;
+            recursive = true;
+        };
+    };
+
     home.packages = with pkgs;
     [
         nerd-fonts.jetbrains-mono
@@ -19,6 +26,9 @@
         asciinema
         /* For image.nvim */
         luajitPackages.magick
+        libqalculate
+        dict
+        /* python313Packages.pylatexenc */
     ];
     fonts.fontconfig.enable = true;
 
@@ -37,6 +47,7 @@
         fastfetch.enable = true;
         lazygit.enable = true;
         bat.enable = true;
+        btop.enable = true;
         fzf = {
             enable = true;
             enableZshIntegration = true;

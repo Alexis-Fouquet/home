@@ -55,13 +55,17 @@
             gitsigns.enable = true;
 
             obsidian = {
-                enable = false;
+                enable = true;
                 lazyLoad.settings = {
                     ft = "md";
                 };
             };
             vimwiki = {
+                /* Breaks everything by changing the filetype */
                 enable = false;
+                settings = {
+                    filetypes = [ "markdown" ];
+                };
                 /* LazyLoad not yet implemented for this plugin */
                 /*
                 lazyLoad.settings = {
@@ -70,10 +74,40 @@
                 */
             };
             render-markdown = {
-                enable = false;
+                enable = true;
                 lazyLoad.settings = {
-                    ft = "md";
+                    ft = "markdown";
                 };
+            };
+            vimtex.enable = true;
+
+            nvim-snippets = {
+                enable = true;
+                settings = {
+                    /* Too slow, look at this later
+                    extended_filetypes = {
+                        markdown = [ "tex" "latex" ];
+                    };
+                    */
+                    friendly_snippets = false;
+                    create_cmp_source = true;
+                };
+            };
+
+            /*
+            luasnip = {
+                enable = false;
+                filetypeExtend = {
+                    markdown = [
+                    "tex"
+                    "latex"
+                    ];
+                };
+            };
+             */
+
+            friendly-snippets = {
+                enable = false;
             };
 
             nvim-autopairs = {
@@ -115,6 +149,8 @@
                     { name = "path"; }
                     { name = "buffer"; }
                     { name = "calc"; }
+                    { name = "snippets"; }
+                    /* { name = "luasnip"; } */
                     ];
 
                     mapping = {
@@ -190,8 +226,9 @@
                             "menu"
                         ];
                         format =
+                            lib.mkForce
                             /* lua */
-                            lib.mkForce ''
+                            ''
                             function(entry, vim_item)
                                 local kind = require("lspkind")
                                     .cmp_format({
@@ -332,6 +369,9 @@
         performance = {
             byteCompileLua.enable = true;
             combinePlugins.enable = true;
+            combinePlugins.standalonePlugins = [
+            "friendly-snippets"
+            ];
         };
 
         globals.mapleader = " ";
@@ -350,6 +390,11 @@
             key = "<leader>m";
         }
         ];
+
+        extraConfigLua =
+        /* lua */
+        ''
+        '';
     };
 }
 

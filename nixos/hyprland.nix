@@ -12,7 +12,10 @@ in {
     wofi
     nautilus
     hyprpicker
-    overskride
+    blueman
+    hyprshot
+    obsidian
+    bluetui
     ];
 
     services.hyprpaper.enable = true;
@@ -52,6 +55,8 @@ in {
         "${mod}, A, hyprexpo:expo, toggle"
 
         "${mod}, N, exec, ${toggleNotifications}"
+
+        "${mod}, S, exec, hyprshot -m region"
         ]
         ++ (
                 /* Half from the Hyprland documentation about Nix */
@@ -109,6 +114,10 @@ in {
         "workspaces, 1, 2, default, slidefade"
         "windows, 1, 4, default, slide"
         ];
+
+        general = {
+            gaps_out = 5;
+        };
     };
 
     wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins;
