@@ -28,6 +28,7 @@
         luajitPackages.magick
         libqalculate
         dict
+        /* python313Packages.pylatexenc */
     ];
     fonts.fontconfig.enable = true;
 
