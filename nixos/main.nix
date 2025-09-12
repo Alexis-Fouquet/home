@@ -12,4 +12,6 @@
 
     /* Wifi - use nmcli / nmtui otherwise */
     services.network-manager-applet.enable = true;
+
+    services.flameshot.enable = true;
 }
