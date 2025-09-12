@@ -11,6 +11,13 @@
     ./nixos/main.nix
     ];
 
+    home.file = {
+        "${userpath}/.config/nvim/snippets" = {
+            source = ./nixvim/snippets;
+            recursive = true;
+        };
+    };
+
     home.packages = with pkgs;
     [
         nerd-fonts.jetbrains-mono

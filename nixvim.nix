@@ -79,9 +79,11 @@
             nvim-snippets = {
                 enable = true;
                 settings = {
+                    /* Too slow, look at this later
                     extended_filetypes = {
                         markdown = [ "tex" "latex" ];
                     };
+                    */
                     friendly_snippets = true;
                     create_cmp_source = true;
                 };
