@@ -56,6 +56,7 @@
 
             obsidian = {
                 enable = true;
+                /* TODO: detect repository */
                 lazyLoad.settings = {
                     ft = "md";
                 };
@@ -67,13 +68,14 @@
                     filetypes = [ "markdown" ];
                 };
                 /* LazyLoad not yet implemented for this plugin */
-                /*
-                lazyLoad.settings = {
-                    ft = "md";
-                };
-                */
             };
             render-markdown = {
+                enable = false;
+                lazyLoad.settings = {
+                    ft = "markdown";
+                };
+            };
+            markview = {
                 enable = true;
                 lazyLoad.settings = {
                     ft = "markdown";
@@ -94,7 +96,6 @@
                 };
             };
 
-            /*
             luasnip = {
                 enable = false;
                 filetypeExtend = {
@@ -104,7 +105,6 @@
                     ];
                 };
             };
-             */
 
             friendly-snippets = {
                 enable = false;
@@ -150,6 +150,7 @@
                     { name = "buffer"; }
                     { name = "calc"; }
                     { name = "snippets"; }
+                    /* Commented to avoid auto install */
                     /* { name = "luasnip"; } */
                     ];
 

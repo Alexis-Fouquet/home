@@ -107,5 +107,6 @@
             /* Line from the image.nvim README, needed to run the plugin */
             extraLuaPackages = ps: [ ps.magick ];
         };
+        zathura.enable = true;
    };
 }
