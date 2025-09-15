@@ -6,6 +6,8 @@
         cbonsai
         libqalculate
         dict
+        dust
+        nix-tree
     ];
 
     programs= {
