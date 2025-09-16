@@ -12,6 +12,7 @@
             dev = "nix develop -c zsh";
         };
         completionInit = "autoload -Uz compinit && compinit -C";
+        enableCompletion = true;
         antidote = {
             enable = true;
             plugins =
