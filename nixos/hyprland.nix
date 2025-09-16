@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let mod = "SUPER";
 alt = "SHIFT";
 alt2 = "CTRL";
@@ -6,6 +6,8 @@ browser = "flatpak run app.zen_browser.zen";
 terminal = "kitty";
 drun = "wofi --show drun";
 toggleNotifications = "swaync-client -t -sw";
+forEachProperty = properties: object:
+lib.lists.forEach properties (x: x + object);
 in {
     home.packages = with pkgs;
     [
@@ -118,6 +120,10 @@ in {
         general = {
             gaps_out = 5;
         };
+
+        windowrulev2 =
+        forEachProperty [ "pin" "float" "size 350 200" "move 30 30"]
+        ", title:^(Picture-in-Picture)$";
     };
 
     wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins;
