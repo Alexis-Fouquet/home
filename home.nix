@@ -25,6 +25,7 @@
         /* For image.nvim */
         luajitPackages.magick
         /* python313Packages.pylatexenc */
+        nix-output-monitor
     ];
     fonts.fontconfig.enable = true;
 
