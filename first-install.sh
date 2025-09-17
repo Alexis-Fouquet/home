@@ -1,4 +1,5 @@
 
 echo "Installing configuration"
-nix run home-manager/release-25.05 -- switch --impure
+nix-shell -p home-manager nix-output-monitor --run "make reload-home"
+# nix run home-manager/release-25.05 -- switch --impure
 
