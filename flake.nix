@@ -26,6 +26,9 @@
                 username = username;
                 userpath = userpath;
                 on-nixos = on-nixos;
+                waybar = true;
+                hyprpanel = false;
+                debug = false;
         };
         home = {username, userpath, on-nixos}:
         home-manager.lib.homeManagerConfiguration {

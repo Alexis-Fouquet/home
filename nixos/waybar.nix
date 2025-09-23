@@ -1,11 +1,14 @@
-{ ... }:
+{ hyprpanel, waybar, debug, ... }:
 let baseBatteryInfo = "{icon} {capacity}%"; in
 {
     programs.waybar = {
-        enable = true;
+        enable = waybar;
         systemd.enable = true;
-        /* Debug only */
-        systemd.enableInspect = false;
+        systemd.enableInspect = debug;
+    };
+
+    programs.hyprpanel = {
+        enable = hyprpanel;
     };
 
     programs.waybar.settings.mainBar = {
