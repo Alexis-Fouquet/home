@@ -126,6 +126,7 @@
                     markdown_inline
                     latex
                     python
+                    qmljs
                 ];
 
                 settings = {
@@ -311,6 +312,7 @@
                 clangd.enable = true;
                 rust_analyzer.enable = true;
                 texlab.enable = true;
+                qmlls.enable = true;
 
                 /* Testing python */
                 ruff.enable = false;

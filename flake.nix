@@ -13,10 +13,14 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
+        quickshell = {
+            url = "github:quickshell-mirror/quickshell";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs =
-    { nixpkgs, home-manager, nixvim, nix-flatpak, ... }:
+    { nixpkgs, home-manager, nixvim, nix-flatpak, quickshell, ... }:
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -26,7 +30,9 @@
                 username = username;
                 userpath = userpath;
                 on-nixos = on-nixos;
+                quickshell = quickshell.packages.${system}.default;
                 waybar = true;
+                qs = false;
                 hyprpanel = false;
                 debug = false;
         };
