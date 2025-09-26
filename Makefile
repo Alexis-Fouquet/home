@@ -11,7 +11,7 @@ reload-os:
 	nixos-rebuild switch --flake . --impure --use-remote-sudo $(nom)
 
 reload-home:
-	hset -o pipefail; ome-manager switch --impure $(nom)
+	home-manager switch --impure $(nom)
 
 update: flake.lock
 

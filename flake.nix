@@ -24,7 +24,7 @@
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        extra = {username, userpath, on-nixos}: {
+        extra = {username, userpath, on-nixos, at-epita}: {
                 nixvim = nixvim;
                 flatpak = nix-flatpak;
                 username = username;
@@ -35,8 +35,10 @@
                 qs = false;
                 hyprpanel = false;
                 debug = false;
+                at-epita = at-epita;
+                i3 = at-epita || on-nixos;
         };
-        home = {username, userpath, on-nixos}:
+        home = {username, userpath, on-nixos, at-epita}:
         home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             modules = [
@@ -46,6 +48,7 @@
                 username = username;
                 userpath = userpath;
                 on-nixos = on-nixos;
+                at-epita = at-epita;
             };
         };
     in
@@ -64,6 +67,7 @@
                             username = "alexisf";
                             userpath = "/home/alexisf";
                             on-nixos = true;
+                            at-epita = false;
                         };
                         users.alexisf = import ./home-index.nix;
                     };
@@ -74,6 +78,11 @@
             username = "alexisf";
             userpath = "/home/alexisf";
             on-nixos = true;
+        };
+        homeConfigurations."alexis.fouquet" = home {
+            username = "alexis.fouquet";
+            userpath = builtins.getEnv "HOME";
+            on-nixos = false;
         };
         homeConfigurations."${builtins.getEnv "USER"}" = home {
             username = builtins.getEnv "USER";
