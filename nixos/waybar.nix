@@ -1,11 +1,18 @@
-{ ... }:
+{ hyprpanel, waybar, debug, qs, lib, quickshell, ... }:
 let baseBatteryInfo = "{icon} {capacity}%"; in
 {
+    home.packages = lib.optionals qs [
+    quickshell
+    ];
+
     programs.waybar = {
-        enable = true;
+        enable = waybar;
         systemd.enable = true;
-        /* Debug only */
-        systemd.enableInspect = false;
+        systemd.enableInspect = debug;
+    };
+
+    programs.hyprpanel = {
+        enable = hyprpanel;
     };
 
     programs.waybar.settings.mainBar = {

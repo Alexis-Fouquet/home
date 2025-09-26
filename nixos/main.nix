@@ -1,4 +1,4 @@
-{ ... }:
+{ hyprpanel, ... }:
 {
     imports = [
     ./hyprland.nix
@@ -7,8 +7,8 @@
     ./home.nix
     ];
 
-    /* Notifications */
-    services.swaync.enable = true;
+    /* Notifications UI - disabled if managed by hyprpanel */
+    services.swaync.enable = !hyprpanel;
     /* libnotify is placed in configuration.nix */
 
     /* Wifi - use nmcli / nmtui otherwise */

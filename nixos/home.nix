@@ -8,9 +8,11 @@
         dict
         dust
         nix-tree
+        /* TODO: find integrations and CLI apps */
+        anki
     ];
 
-    programs= {
+    programs = {
         btop.enable = true;
         lazygit.enable = true;
     };
