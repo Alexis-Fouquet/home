@@ -74,20 +74,11 @@
                 }
             ];
         };
-        homeConfigurations.alexisf = home {
-            username = "alexisf";
-            userpath = "/home/alexisf";
-            on-nixos = true;
-        };
-        homeConfigurations."alexis.fouquet" = home {
-            username = "alexis.fouquet";
-            userpath = builtins.getEnv "HOME";
-            on-nixos = false;
-        };
         homeConfigurations."${builtins.getEnv "USER"}" = home {
             username = builtins.getEnv "USER";
             userpath = builtins.getEnv "HOME";
-            on-nixos = false;
+            on-nixos = builtins.getEnv "USER" == "alexisf";
+            at-epita = builtins.getEnv "USER" == "alexis.fouquet";
         };
     };
 }
