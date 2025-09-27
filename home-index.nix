@@ -1,4 +1,4 @@
-{ lib, on-nixos, i3, ... }:
+{ lib, on-nixos, at-epita, ... }:
 {
     imports = [
         ./home.nix
@@ -7,7 +7,9 @@
     ] ++ lib.optionals on-nixos
     [
     ./nixos/main.nix
-    ] ++ lib.optionals i3 [
-    ./epita/i3.nix
+    ./custom/apps.nix
+    ] ++ lib.optionals at-epita [
+    ./epita/epita.nix
+    ./custom/apps.nix
     ];
 }
