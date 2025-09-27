@@ -1,4 +1,4 @@
-{ pkgs, lib, username, userpath, on-nixos, ... }:
+{ pkgs, username, userpath, ... }:
 {
     /* This configuration should be portable */
     home.username = username;
@@ -6,10 +6,6 @@
     /* Should not change */
     home.stateVersion = "24.11";
 
-    imports = lib.optionals on-nixos
-    [
-    ./nixos/main.nix
-    ];
 
     home.file = {
         "${userpath}/.config/nvim/snippets" = {
