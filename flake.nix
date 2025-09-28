@@ -17,12 +17,19 @@
             url = "github:quickshell-mirror/quickshell";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nix-wallpaper.url = "github:lunik1/nix-wallpaper";
     };
 
-    outputs =
-    { nixpkgs, home-manager, nixvim, nix-flatpak, quickshell, ... }:
-    let
-        system = "x86_64-linux";
+    outputs = {
+        nixpkgs,
+        home-manager,
+        nixvim,
+        nix-flatpak,
+        quickshell,
+        nix-wallpaper,
+        ...
+    }: let
+        system = builtins.currentSystem;
         pkgs = nixpkgs.legacyPackages.${system};
         extra = {username, userpath, on-nixos, at-epita}: {
                 nixvim = nixvim;
@@ -31,6 +38,7 @@
                 userpath = userpath;
                 on-nixos = on-nixos;
                 quickshell = quickshell.packages.${system}.default;
+                nix-wallpaper = nix-wallpaper.packages.${system}.default;
                 waybar = true;
                 qs = false;
                 hyprpanel = false;

@@ -19,12 +19,6 @@ in {
     bluetui
     ];
 
-    services.hyprpaper = {
-        enable = true;
-        settings = {
-            splash = true;
-        };
-    };
 
     wayland.windowManager.hyprland = {
         enable = true;
