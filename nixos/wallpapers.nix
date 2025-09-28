@@ -7,6 +7,9 @@
             preload = [
             "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png"
             ];
+            wallpaper = [
+            "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png"
+            ];
         };
     };
 

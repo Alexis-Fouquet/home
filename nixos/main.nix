@@ -5,6 +5,7 @@
     ./waybar.nix
     ./hypridle.nix
     ./home.nix
+    ./wallpapers.nix
     ];
 
     /* Notifications UI - disabled if managed by hyprpanel */
