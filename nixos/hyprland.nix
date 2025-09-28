@@ -11,7 +11,6 @@ lib.lists.forEach properties (x: x + object);
 in {
     home.packages = with pkgs;
     [
-    wofi
     nautilus
     hyprpicker
     blueman
@@ -19,6 +18,10 @@ in {
     obsidian
     bluetui
     ];
+
+    programs.rofi = {
+        enable = true;
+    };
 
     services.hyprpaper.enable = true;
 
