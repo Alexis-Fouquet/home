@@ -4,7 +4,7 @@ alt = "SHIFT";
 alt2 = "CTRL";
 browser = "flatpak run app.zen_browser.zen";
 terminal = "kitty";
-drun = "wofi --show drun";
+drun = "rofi -show drun";
 toggleNotifications = "swaync-client -t -sw";
 forEachProperty = properties: object:
 lib.lists.forEach properties (x: x + object);
@@ -19,11 +19,12 @@ in {
     bluetui
     ];
 
-    programs.rofi = {
+    services.hyprpaper = {
         enable = true;
+        settings = {
+            splash = true;
+        };
     };
-
-    services.hyprpaper.enable = true;
 
     wayland.windowManager.hyprland = {
         enable = true;
