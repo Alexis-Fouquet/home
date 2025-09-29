@@ -392,6 +392,10 @@
             action = ":make";
             key = "<leader>m";
         }
+        {
+            action = ":!clang-format -i %";
+            key = "<leader>m";
+        }
         ];
 
         extraConfigLua =
