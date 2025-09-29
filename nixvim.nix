@@ -394,7 +394,7 @@
         }
         {
             action = ":!clang-format -i %";
-            key = "<leader>m";
+            key = "<leader>c";
         }
         ];
 
