@@ -10,6 +10,8 @@
             cat = "bat";
             icat = "kitten icat";
             dev = "nix develop -c zsh";
+            open = "xdg-open";
+            gflags = "gcc -std=c99 -pedantic -Werror -Wall -Wextra -Wvla";
         };
         completionInit = "autoload -Uz compinit && compinit -C";
         enableCompletion = true;
