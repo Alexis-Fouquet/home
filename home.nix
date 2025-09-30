@@ -33,6 +33,7 @@
     [
         /* For Rust */
         "$HOME/.cargo/bin"
+        ./scripts/
     ];
 
     programs = {
