@@ -12,6 +12,7 @@
             dev = "nix develop -c zsh";
             open = "xdg-open";
             gflags = "gcc -std=c99 -pedantic -Werror -Wall -Wextra -Wvla";
+            st0 = "shutdown 0";
         };
         completionInit = "autoload -Uz compinit && compinit -C";
         enableCompletion = true;
