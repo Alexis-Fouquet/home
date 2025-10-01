@@ -1,11 +1,17 @@
+# General template for a makefile
+
 CC=gcc
 CFLAGS=-std=c99 -pedantic -Werror -Wall -Wextra -Wvla
 
 TARGET=main
-SOURCES=$(find . -name "*.c")
+TARGET_DEBUG=main_debug
+SOURCES=$(shell find . -name "*.c")
+OBJECTS=$(SOURCES:.c=.o)
 
-$(TARGET): $(SOURCES)
+$(TARGET): $(OBJECTS)
+
+$(TARGET_DEBUG): CFLAGS += -g
+$(TARGET_DEBUG): $(OBJECTS)
 
 clean:
-	rm $(TARGET)
-
+	rm $(TARGET) $(OBJECTS) $(TARGET_DEBUG)
