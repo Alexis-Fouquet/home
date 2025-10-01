@@ -401,6 +401,8 @@
         extraConfigLua =
         /* lua */
         ''
+        -- There might be a better way to do it
+        vim.cmd("packadd termdebug");
         '';
     };
 }
