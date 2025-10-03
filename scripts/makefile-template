@@ -5,13 +5,29 @@ CFLAGS=-std=c99 -pedantic -Werror -Wall -Wextra -Wvla
 
 TARGET=main
 TARGET_DEBUG=main_debug
+TARGET_MEMORY=main_memory
+TARGET_TESTS=testsuite
+NAME_TESTS=tests
 SOURCES=$(shell find . -name "*.c")
 OBJECTS=$(SOURCES:.c=.o)
+OBJECTS_TESTS=$(filter-out ./main.o,$(OBJECTS))
 
 $(TARGET): $(OBJECTS)
 
 $(TARGET_DEBUG): CFLAGS += -g
-$(TARGET_DEBUG): $(OBJECTS)
+$(TARGET_DEBUG): $(TARGET)
+
+$(TARGET_MEMORY): CFLAGS += -g -fsanitize=address
+$(TARGET_MEMORY): LDFLAGS += -fsanitize=address
+$(TARGET_MEMORY): $(TARGET)
+
+$(TARGET_TESTS): $(OBJECTS_TESTS)
+
+$(NAME_TESTS): CFLAGS += -g -fsanitize=address
+$(NAME_TESTS): LDFLAGS += -fsanitize=address
+$(NAME_TESTS): LDLIBS += -lcriterion
+$(NAME_TESTS): $(TARGET_TESTS)
+	./$(TARGET_TESTS)
 
 clean:
-	rm $(TARGET) $(OBJECTS) $(TARGET_DEBUG)
+	rm $(TARGET) $(OBJECTS) $(TARGET_TESTS)
