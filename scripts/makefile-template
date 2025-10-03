@@ -8,11 +8,14 @@ TARGET_DEBUG=main_debug
 TARGET_MEMORY=main_memory
 TARGET_TESTS=testsuite
 NAME_TESTS=tests
+NAME_COVERAGE=cov
+
 SOURCES=$(shell find . -name "*.c")
 OBJECTS=$(SOURCES:.c=.o)
 OBJECTS_TESTS=$(filter-out ./main.o,$(OBJECTS))
+OBJECTS_MAIN=$(filter-out ./testsuite.o,$(OBJECTS))
 
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS_MAIN)
 
 $(TARGET_DEBUG): CFLAGS += -g
 $(TARGET_DEBUG): $(TARGET)
@@ -21,12 +24,18 @@ $(TARGET_MEMORY): CFLAGS += -g -fsanitize=address
 $(TARGET_MEMORY): LDFLAGS += -fsanitize=address
 $(TARGET_MEMORY): $(TARGET)
 
+$(TARGET_TESTS): CFLAGS += -g -fsanitize=address
+$(TARGET_TESTS): LDFLAGS += -fsanitize=address
+$(TARGET_TESTS): LDLIBS += -lcriterion
 $(TARGET_TESTS): $(OBJECTS_TESTS)
 
-$(NAME_TESTS): CFLAGS += -g -fsanitize=address
-$(NAME_TESTS): LDFLAGS += -fsanitize=address
-$(NAME_TESTS): LDLIBS += -lcriterion
 $(NAME_TESTS): $(TARGET_TESTS)
+	./$(TARGET_TESTS)
+
+$(NAME_COVERAGE): CFLAGS += -fPIC --coverage -O0 -fprofile-abs-path
+$(NAME_COVERAGE): LDLIBS += -lgcov
+$(NAME_COVERAGE): LDFLAGS += --coverage -O0 -fprofile-abs-path
+$(NAME_COVERAGE): $(TARGET_TESTS)
 	./$(TARGET_TESTS)
 
 clean:
