@@ -90,6 +90,8 @@
         git
         gnumake
         libnotify
+        man-pages
+        man-pages-posix
     ];
     environment.pathsToLink = [ "/share/zsh" ];
 
@@ -107,4 +109,8 @@
 
     /* TODO: find a way to add this in the dev flake */
     virtualisation.docker.enable = true;
+
+    documentation = {
+        dev.enable = true;
+    };
 }
