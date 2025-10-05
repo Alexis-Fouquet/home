@@ -1,19 +1,21 @@
 { nix-wallpaper, ... }:
-{
+let theme = (nix-wallpaper.override {
+        preset = "gruvbox-dark";
+        });
+theme-path = "${theme}/share/wallpapers/nixos-wallpaper.png";
+in {
     services.hyprpaper = {
         enable = true;
         settings = {
             splash = true;
-            preload = [
-            "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png"
-            ];
+            preload = [ theme-path ];
             wallpaper = [
-            "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png"
+            ", ${theme-path}"
             ];
         };
     };
 
     home.packages = [
-    nix-wallpaper
+    theme
     ];
 }
