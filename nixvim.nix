@@ -81,7 +81,7 @@
                     ft = "markdown";
                 };
             };
-            vimtex.enable = true;
+            vimtex.enable = false;
 
             nvim-snippets = {
                 enable = true;
@@ -122,11 +122,7 @@
                     rust
                     lua
                     nix
-                    markdown
-                    markdown_inline
                     latex
-                    python
-                    qmljs
                 ];
 
                 settings = {
@@ -309,7 +305,9 @@
 
             servers = {
                 nixd.enable = true;
-                clangd.enable = true;
+                clangd = {
+                    enable = false;
+                };
                 rust_analyzer.enable = true;
                 texlab.enable = true;
                 qmlls.enable = true;
