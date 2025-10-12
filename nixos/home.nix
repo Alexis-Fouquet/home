@@ -6,6 +6,7 @@
         cbonsai
         dict
         nix-tree
+        godot-mono
         /* TODO: find integrations and CLI apps */
         anki
     ];
