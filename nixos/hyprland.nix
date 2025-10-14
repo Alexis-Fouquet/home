@@ -36,7 +36,7 @@ in {
         bind = [
         "${mod}, B, exec, ${browser}"
         "${mod}, D, exec, ${drun}"
-        "${mod}, T, exec, ${terminal}"
+        "${mod}, RETURN, exec, ${terminal}"
         "${mod}, L, exec, hyprlock"
 
         /* Windows */
