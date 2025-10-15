@@ -305,7 +305,7 @@
         };
 
         lsp = {
-            inlayHints.enable = false;
+            inlayHints.enable = true;
 
             servers = {
                 nixd.enable = true;
