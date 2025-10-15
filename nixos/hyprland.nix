@@ -4,7 +4,7 @@ alt = "SHIFT";
 alt2 = "CTRL";
 browser = "flatpak run app.zen_browser.zen";
 terminal = "kitty";
-drun = "rofi -show drun";
+drun = "rofi -show drun -show-icons";
 toggleNotifications = "swaync-client -t -sw";
 forEachProperty = properties: object:
 lib.lists.forEach properties (x: x + object);
