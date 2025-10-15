@@ -15,10 +15,6 @@ window#waybar {
     color: #fafffa;
 }
 
-#workspaces {
-    /* background-color: rgba(40, 40, 40, 0.5); */
-}
-
 #workspaces button {
     padding: 1px;
     background-color: rgba(2, 2, 2, 0.4);

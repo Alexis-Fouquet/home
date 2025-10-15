@@ -108,11 +108,15 @@ let baseBatteryInfo = "{icon} {capacity}%"; in
         };
 
         network = {
-            format-wifi = " {essid} ({signalStrength}%)";
-            format-ethernet = "E {ipaddr}/{cidr}";
-            tooltip-format = "{ifname} via {gwaddr}";
-            format-linked = "L {ifname} (No IP)";
+            format-wifi = " ({signalStrength}%)";
+            format-ethernet = "E Connected";
+            format-linked = "L Connected";
             format-disconnected = "⚠ Disconnected";
+
+            tooltip-format-wifi = "{essid} with {ipaddr}";
+            tooltip-format-ethernet = "E {ipaddr}/{cidr}";
+            tooltip-format-linked = "{ifname} via {gwaddr} (No IP)";
+            tooltip-format-disconnected = "No connection";
         };
 
         temperature = {
