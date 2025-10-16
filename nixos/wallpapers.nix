@@ -1,6 +1,6 @@
 { nix-wallpaper, ... }:
 let theme = (nix-wallpaper.override {
-        preset = "gruvbox-dark";
+        preset = "catppuccin-mocha";
         });
 theme-path = "${theme}/share/wallpapers/nixos-wallpaper.png";
 in {

@@ -1,4 +1,4 @@
-{ nixvim, lib, pkgs, ... }:
+{ nixvim, lib, pkgs, on-nixos, at-epita, ... }:
 {
     imports = [
         nixvim.homeManagerModules.nixvim
@@ -397,6 +397,9 @@
             key = "<leader>c";
         }
         ];
+
+        clipboard.providers.wl-copy.enable = on-nixos;
+        clipboard.providers.xclip.enable = at-epita;
 
         extraConfigLua =
         /* lua */
