@@ -1,4 +1,4 @@
-{ nixvim, lib, pkgs, on-nixos, at-epita, ... }:
+{ nixvim, lib, pkgs, on-nixos, at-epita, debug, ... }:
 {
     imports = [
         nixvim.homeManagerModules.nixvim
@@ -377,7 +377,7 @@
         };
 
         performance = {
-            byteCompileLua.enable = false;
+            byteCompileLua.enable = debug;
             combinePlugins.enable = true;
             combinePlugins.standalonePlugins = [
             "friendly-snippets"
