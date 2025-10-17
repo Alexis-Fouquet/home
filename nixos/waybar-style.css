@@ -1,7 +1,11 @@
 /* WARNING: not all elements support margin or padding */
 
 * {
-    font: 16px "Symbols Nerd Font", "FantasqueSansM Nerd Font Mono", sans-serif;
+    font:
+        16px "Symbols Nerd Font",
+        "FantasqueSansM Nerd Font Mono",
+        sans-serif;
+    font-weight: 600;
 }
 
 .icon {
