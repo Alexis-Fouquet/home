@@ -1,12 +1,11 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs;
-    [
+  home.packages = with pkgs; [
     dust
     libqalculate
-    ];
+  ];
 
-    programs.rofi = {
-        enable = true;
-    };
+  programs.rofi = {
+    enable = true;
+  };
 }
