@@ -42,7 +42,7 @@
                 waybar = true;
                 qs = false;
                 hyprpanel = false;
-                debug = true;
+                debug = false;
                 at-epita = at-epita;
                 i3 = at-epita || on-nixos;
         };

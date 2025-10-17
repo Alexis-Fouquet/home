@@ -92,6 +92,7 @@
         libnotify
         man-pages
         man-pages-posix
+        nixfmt-rfc-style
     ];
     environment.pathsToLink = [ "/share/zsh" ];
 

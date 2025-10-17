@@ -308,7 +308,10 @@
             inlayHints.enable = true;
 
             servers = {
-                nixd.enable = true;
+                nixd = {
+                    enable = true;
+                    settings.settings.nixd.formatting.command = "nixfmt";
+                };
                 clangd.enable = true;
                 rust_analyzer.enable = true;
                 texlab.enable = true;
@@ -334,6 +337,10 @@
                     nixvim.lib.nixvim.mkRaw
                     /* lua */
                     "require('telescope.builtin').lsp_references";
+            }
+            {
+                key = "gF";
+                lspBufAction = "format";
             }
             {
                 key = "gt";
@@ -370,7 +377,7 @@
         };
 
         performance = {
-            byteCompileLua.enable = true;
+            byteCompileLua.enable = false;
             combinePlugins.enable = true;
             combinePlugins.standalonePlugins = [
             "friendly-snippets"

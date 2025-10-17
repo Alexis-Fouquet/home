@@ -1,5 +1,7 @@
 { hyprpanel, waybar, debug, qs, lib, quickshell, ... }:
-let baseBatteryInfo = "{icon} {capacity}%"; in
+let
+    baseBatteryInfo = "{icon} {capacity}%";
+in
 {
     home.packages = lib.optionals qs [
     quickshell
