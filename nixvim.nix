@@ -306,7 +306,9 @@
       servers = {
         nixd = {
           enable = true;
-          settings.settings.nixd.formatting.command = "nixfmt";
+          settings.settings.nixd.formatting = {
+            command = "nixfmt --width 80";
+          };
         };
         clangd.enable = true;
         rust_analyzer.enable = true;
@@ -329,7 +331,10 @@
         }
         {
           key = "gD";
-          action = nixvim.lib.nixvim.mkRaw /* lua */ "require('telescope.builtin').lsp_references";
+          action =
+            nixvim.lib.nixvim.mkRaw
+              # lua
+              "require('telescope.builtin').lsp_references";
         }
         {
           key = "gF";
@@ -348,11 +353,17 @@
           lspBufAction = "hover";
         }
         {
-          action = nixvim.lib.nixvim.mkRaw /* lua */ "function() vim.diagnostic.jump({ count=-1, float=true }) end";
+          action =
+            nixvim.lib.nixvim.mkRaw
+              # lua
+              "function() vim.diagnostic.jump({ count=-1, float=true }) end";
           key = "<leader>k";
         }
         {
-          action = nixvim.lib.nixvim.mkRaw /* lua */ "function() vim.diagnostic.jump({ count=1, float=true }) end";
+          action =
+            nixvim.lib.nixvim.mkRaw
+              # lua
+              "function() vim.diagnostic.jump({ count=1, float=true }) end";
           key = "<leader>j";
         }
       ];
