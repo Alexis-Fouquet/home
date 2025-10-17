@@ -1,8 +1,12 @@
 /* WARNING: not all elements support margin or padding */
 
 * {
-    font-family: FontAwesome, "FantasqueSansM Nerd Font Mono", sans-serif;
-    font-size: 16px;
+    font: 16px "Symbols Nerd Font", "FantasqueSansM Nerd Font Mono", sans-serif;
+}
+
+.icon {
+    /* TODO: smaller icons */
+    font: 12px "Symbols Nerd Font", sans-serif;
 }
 
 .module {

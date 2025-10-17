@@ -17,6 +17,8 @@
     home.packages = with pkgs;
     [
         nerd-fonts.fantasque-sans-mono
+        /* Trying to fix symbols size on waybar */
+        nerd-fonts.symbols-only
         asciinema
         /* For image.nvim */
         luajitPackages.magick
