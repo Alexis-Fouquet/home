@@ -110,5 +110,9 @@
     };
     zathura.enable = true;
     nh.enable = true;
+    taskwarrior = {
+        enable = true;
+        package = pkgs.taskwarrior3;
+    };
   };
 }
