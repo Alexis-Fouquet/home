@@ -26,7 +26,6 @@
     # For image.nvim
     luajitPackages.magick
     # python313Packages.pylatexenc
-    nh
   ];
   fonts.fontconfig.enable = true;
 
@@ -110,5 +109,6 @@
       extraLuaPackages = ps: [ ps.magick ];
     };
     zathura.enable = true;
+    nh.enable = true;
   };
 }
