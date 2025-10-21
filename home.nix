@@ -2,8 +2,14 @@
   pkgs,
   username,
   userpath,
+  unstable,
   ...
 }:
+let
+  unstable-pkgs = [
+    unstable.nix-search-tv
+  ];
+in
 {
   # This configuration should be portable
   home.username = username;
@@ -16,17 +22,23 @@
       source = ./nixvim/snippets;
       recursive = true;
     };
+    "${userpath}/.config/television/cable/nix-search-tv-fixed.toml" = {
+      source = ./nix.toml;
+    };
   };
 
-  home.packages = with pkgs; [
-    nerd-fonts.fantasque-sans-mono
-    # Trying to fix symbols size on waybar
-    nerd-fonts.symbols-only
-    asciinema
-    # For image.nvim
-    luajitPackages.magick
-    # python313Packages.pylatexenc
-  ];
+  home.packages =
+    with pkgs;
+    [
+      nerd-fonts.fantasque-sans-mono
+      # Trying to fix symbols size on waybar
+      nerd-fonts.symbols-only
+      asciinema
+      # For image.nvim
+      luajitPackages.magick
+      # python313Packages.pylatexenc
+    ]
+    ++ unstable-pkgs;
   fonts.fontconfig.enable = true;
 
   home.sessionVariables = {
@@ -46,13 +58,11 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
-      changeDirWidgetOptions =
-      [
-      "--preview 'ls {}'"
+      changeDirWidgetOptions = [
+        "--preview 'ls {}'"
       ];
-      fileWidgetOptions =
-      [
-      "--preview 'bat {} -r :10'"
+      fileWidgetOptions = [
+        "--preview 'bat {} -r :10'"
       ];
     };
     zoxide = {
@@ -118,9 +128,28 @@
     };
     zathura.enable = true;
     nh.enable = true;
+    fd.enable = true;
     taskwarrior = {
-        enable = true;
-        package = pkgs.taskwarrior3;
+      enable = true;
+      package = pkgs.taskwarrior3;
+    };
+    television = {
+      enable = true;
+      package = unstable.television;
+      # Channels files are not working currently in 25.05
+      # I need to create my own file
+      channels = {
+        nix = {
+          metadata = {
+            name = "nix";
+            requirements = [
+              "nix-search-tv"
+            ];
+          };
+          source.command = "nix-search-tv print";
+          preview.command = "nix-search-tv preview {}";
+        };
+      };
     };
   };
 }

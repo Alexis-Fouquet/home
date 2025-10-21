@@ -1,0 +1,9 @@
+[metadata]
+name = "nix-search-tv-fixed"
+requirements = ["nix-search-tv"]
+
+[preview]
+command = "nix-search-tv preview {}"
+
+[source]
+command = "nix-search-tv print"

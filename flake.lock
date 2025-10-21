@@ -309,7 +309,8 @@
         "nix-wallpaper": "nix-wallpaper",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
-        "quickshell": "quickshell"
+        "quickshell": "quickshell",
+        "unstable-pkgs": "unstable-pkgs"
       }
     },
     "systems": {
@@ -354,6 +355,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "unstable-pkgs": {
+      "locked": {
+        "lastModified": 1760878510,
+        "narHash": "sha256-K5Osef2qexezUfs0alLvZ7nQFTGS9DL2oTVsIXsqLgs=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "5e2a59a5b1a82f89f2c7e598302a9cacebb72a67",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     }

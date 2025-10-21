@@ -18,11 +18,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-wallpaper.url = "github:lunik1/nix-wallpaper";
+
+    unstable-pkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
 
   outputs =
     {
       nixpkgs,
+      unstable-pkgs,
       home-manager,
       nixvim,
       nix-flatpak,
@@ -33,6 +36,7 @@
     let
       system = builtins.currentSystem;
       pkgs = nixpkgs.legacyPackages.${system};
+      unstable = unstable-pkgs.legacyPackages.${system};
       extra =
         {
           username,
@@ -54,6 +58,7 @@
           debug = false;
           at-epita = at-epita;
           i3 = at-epita || on-nixos;
+          unstable = unstable;
         };
       home =
         {
