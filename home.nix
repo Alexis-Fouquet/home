@@ -46,6 +46,14 @@
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      changeDirWidgetOptions =
+      [
+      "--preview 'ls {}'"
+      ];
+      fileWidgetOptions =
+      [
+      "--preview 'bat {} -r :10'"
+      ];
     };
     zoxide = {
       enable = true;
