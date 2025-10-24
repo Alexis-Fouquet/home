@@ -1,4 +1,8 @@
 { pkgs, lib, ... }:
+let
+  use_ly = false;
+  use_gdm = true;
+in
 {
   # Generated from the installer and edited after
   imports = [
@@ -46,16 +50,20 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
+  services.displayManager.ly = {
+      enable = use_ly;
+  };
+
   # TODO: as I use Hyprland, I should switch gdm to wayland
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.gdm.enable = true;
-  # Only used for installation
-  services.xserver.desktopManager.gnome.enable = false;
-
+  services.xserver.enable = use_gdm;
   services.xserver.xkb = {
     layout = "fr";
     variant = "azerty";
+  };
+
+  services.xserver.displayManager.gdm = {
+    enable = use_gdm;
+    wayland = true;
   };
 
   console.keyMap = "fr";
