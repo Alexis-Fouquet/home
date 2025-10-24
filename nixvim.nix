@@ -7,10 +7,19 @@
   debug,
   ...
 }:
+let
+  diagrams = false && !at-epita;
+in
 {
   imports = [
     nixvim.homeManagerModules.nixvim
   ];
+
+  home.packages = with pkgs;
+  [] ++ lib.optionals diagrams [
+  mermaid-cli
+  plantuml
+  ] ;
 
   programs.ripgrep.enable = true;
 
@@ -63,7 +72,7 @@
       gitsigns.enable = true;
 
       obsidian = {
-        enable = true;
+        enable = !at-epita;
         # TODO: detect repository
         lazyLoad.settings = {
           ft = "md";
@@ -84,12 +93,15 @@
         };
       };
       markview = {
-        enable = true;
+        enable = !at-epita;
         lazyLoad.settings = {
           ft = "markdown";
         };
       };
-      vimtex.enable = true;
+      vimtex.enable = !at-epita;
+      diagram = {
+          enable = diagrams;
+      };
 
       nvim-snippets = {
         enable = true;
@@ -334,7 +346,9 @@
           action =
             nixvim.lib.nixvim.mkRaw
               # lua
-              "require('telescope.builtin').lsp_references";
+              ''
+              require('telescope.builtin').lsp_references
+              '';
         }
         {
           key = "gF";
@@ -356,14 +370,18 @@
           action =
             nixvim.lib.nixvim.mkRaw
               # lua
-              "function() vim.diagnostic.jump({ count=-1, float=true }) end";
+              ''
+              function() vim.diagnostic.jump({ count=-1, float=true }) end
+              '';
           key = "<leader>k";
         }
         {
           action =
             nixvim.lib.nixvim.mkRaw
               # lua
-              "function() vim.diagnostic.jump({ count=1, float=true }) end";
+              ''
+              function() vim.diagnostic.jump({ count=1, float=true }) end
+              '';
           key = "<leader>j";
         }
       ];
