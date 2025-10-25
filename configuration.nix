@@ -1,110 +1,133 @@
 { pkgs, lib, ... }:
+let
+  use_ly = false;
+  use_gdm = true;
+in
 {
-    /* Generated from the installer and edited after */
-    imports =
-        [
-        /* Impure - generated per computer - impure even with a symlink */
-        ./hardware-configuration.nix
-        ./flatpak.nix
-        ];
+  # Generated from the installer and edited after
+  imports = [
+    # Impure - generated per computer - impure even with a symlink
+    ./hardware-configuration.nix
+    ./flatpak.nix
+  ];
 
-    /* Enable bluetooth */
-    hardware.bluetooth = {
-        enable = true;
-        powerOnBoot = true;
-        settings = {
-            General = {
-                Experimental = true;
-            };
-        };
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+      };
     };
+  };
 
-    /* Bootloader */
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-    networking.hostName = "nixos";
-    networking.networkmanager.enable = true;
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
 
-    time.timeZone = "Europe/Paris";
+  time.timeZone = "Europe/Paris";
 
-    i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-    i18n.extraLocaleSettings = {
-        LC_ADDRESS = "fr_FR.UTF-8";
-        LC_IDENTIFICATION = "fr_FR.UTF-8";
-        LC_MEASUREMENT = "fr_FR.UTF-8";
-        LC_MONETARY = "fr_FR.UTF-8";
-        LC_NAME = "fr_FR.UTF-8";
-        LC_NUMERIC = "fr_FR.UTF-8";
-        LC_PAPER = "fr_FR.UTF-8";
-        LC_TELEPHONE = "fr_FR.UTF-8";
-        LC_TIME = "fr_FR.UTF-8";
-    };
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "fr_FR.UTF-8";
+    LC_IDENTIFICATION = "fr_FR.UTF-8";
+    LC_MEASUREMENT = "fr_FR.UTF-8";
+    LC_MONETARY = "fr_FR.UTF-8";
+    LC_NAME = "fr_FR.UTF-8";
+    LC_NUMERIC = "fr_FR.UTF-8";
+    LC_PAPER = "fr_FR.UTF-8";
+    LC_TELEPHONE = "fr_FR.UTF-8";
+    LC_TIME = "fr_FR.UTF-8";
+  };
 
-    /* TODO: as I use Hyprland, I should switch gdm to wayland */
-    services.xserver.enable = true;
+  services.displayManager.ly = {
+      enable = use_ly;
+  };
 
-    services.xserver.displayManager.gdm.enable = true;
-    /* Only used for installation */
-    services.xserver.desktopManager.gnome.enable = false;
+  # TODO: as I use Hyprland, I should switch gdm to wayland
+  services.xserver.enable = use_gdm;
+  services.xserver.xkb = {
+    layout = "fr";
+    variant = "azerty";
+  };
 
-    services.xserver.xkb = {
-        layout = "fr";
-        variant = "azerty";
-    };
+  services.xserver.displayManager.gdm = {
+    enable = use_gdm;
+    wayland = true;
+  };
 
-    console.keyMap = "fr";
-    services.printing.enable = true;
+  console.keyMap = "fr";
+  services.printing.enable = true;
 
-    services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
-    services.pipewire = {
-        enable = true;
-        alsa.enable = true;
-        alsa.support32Bit = true;
-        pulse.enable = true;
-    };
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
-    users.users.alexisf = {
-        isNormalUser = true;
-        description = "Alexis Fouquet";
-        extraGroups = [ "networkmanager" "wheel" ];
-    };
-
-    programs.firefox.enable = true;
-    programs.hyprland.enable = true;
-    programs.hyprlock.enable = true;
-
-    /* Should restart after editing this */
-    systemd.user.services.hypridle = {
-        path = [ pkgs.libnotify ];
-    };
-
-    services.flatpak.enable = true;
-
-    environment.systemPackages = with pkgs; [
-        vim
-        git
-        gnumake
-        libnotify
+  users.users.alexisf = {
+    isNormalUser = true;
+    description = "Alexis Fouquet";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
     ];
-    environment.pathsToLink = [ "/share/zsh" ];
+  };
 
-    system.stateVersion = "25.05"; /* Did you read the comment? Yes */
+  programs.firefox.enable = true;
+  programs.hyprland.enable = true;
+  programs.hyprlock.enable = true;
 
-    nix.gc = {
-        automatic = true;
-        dates = "weekly";
-    };
+  # Should restart after editing this
+  systemd.user.services.hypridle = {
+    path = [ pkgs.libnotify ];
+  };
 
-    nixpkgs.config.allowUnfreePredicate = p:
+  services.flatpak.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    gnumake
+    libnotify
+    man-pages
+    man-pages-posix
+    nixfmt-rfc-style
+  ];
+  environment.pathsToLink = [ "/share/zsh" ];
+
+  system.stateVersion = "25.05"; # Did you read the comment? Yes
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+  };
+
+  nixpkgs.config.allowUnfreePredicate =
+    p:
     builtins.elem (lib.getName p) [
-    "obsidian"
+      "obsidian"
     ];
 
-    /* TODO: find a way to add this in the dev flake */
-    virtualisation.docker.enable = true;
+  # TODO: find a way to add this in the dev flake
+  virtualisation.docker.enable = true;
+
+  documentation = {
+    enable = true;
+    man.enable = true;
+    dev.enable = true;
+  };
 }

@@ -1,19 +1,25 @@
 { nix-wallpaper, ... }:
+let
+  theme = (
+    nix-wallpaper.override {
+      preset = "catppuccin-mocha";
+    }
+  );
+  theme-path = "${theme}/share/wallpapers/nixos-wallpaper.png";
+in
 {
-    services.hyprpaper = {
-        enable = true;
-        settings = {
-            splash = true;
-            preload = [
-            "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png"
-            ];
-            wallpaper = [
-            "${nix-wallpaper}/share/wallpapers/nixos-wallpaper.png"
-            ];
-        };
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      splash = true;
+      preload = [ theme-path ];
+      wallpaper = [
+        ", ${theme-path}"
+      ];
     };
+  };
 
-    home.packages = [
-    nix-wallpaper
-    ];
+  home.packages = [
+    theme
+  ];
 }
