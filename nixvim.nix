@@ -93,7 +93,7 @@ in
         };
       };
       markview = {
-        enable = !at-epita;
+        enable = true;
         lazyLoad.settings = {
           ft = "markdown";
         };
