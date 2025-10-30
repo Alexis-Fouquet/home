@@ -16,7 +16,6 @@ in
     hyprpicker
     blueman
     hyprshot
-    obsidian
     bluetui
   ];
 
