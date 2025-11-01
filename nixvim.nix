@@ -15,11 +15,13 @@ in
     nixvim.homeManagerModules.nixvim
   ];
 
-  home.packages = with pkgs;
-  [] ++ lib.optionals diagrams [
-  mermaid-cli
-  plantuml
-  ] ;
+  home.packages =
+    with pkgs;
+    [ ]
+    ++ lib.optionals diagrams [
+      mermaid-cli
+      plantuml
+    ];
 
   programs.ripgrep.enable = true;
 
@@ -100,7 +102,7 @@ in
       };
       vimtex.enable = !at-epita;
       diagram = {
-          enable = diagrams;
+        enable = diagrams;
       };
 
       nvim-snippets = {
@@ -347,7 +349,7 @@ in
             nixvim.lib.nixvim.mkRaw
               # lua
               ''
-              require('telescope.builtin').lsp_references
+                require('telescope.builtin').lsp_references
               '';
         }
         {
@@ -371,7 +373,7 @@ in
             nixvim.lib.nixvim.mkRaw
               # lua
               ''
-              function() vim.diagnostic.jump({ count=-1, float=true }) end
+                function() vim.diagnostic.jump({ count=-1, float=true }) end
               '';
           key = "<leader>k";
         }
@@ -380,7 +382,7 @@ in
             nixvim.lib.nixvim.mkRaw
               # lua
               ''
-              function() vim.diagnostic.jump({ count=1, float=true }) end
+                function() vim.diagnostic.jump({ count=1, float=true }) end
               '';
           key = "<leader>j";
         }
@@ -419,7 +421,20 @@ in
         action = ":!clang-format -i %";
         key = "<leader>c";
       }
-    ];
+    ]
+    ++
+      builtins.map
+        (str: {
+          action = "<nop>";
+          key = str;
+          mode = [ "n" ];
+        })
+        [
+          "<Left>"
+          "<Right>"
+          "<Up>"
+          "<Down>"
+        ];
 
     clipboard.providers.wl-copy.enable = on-nixos;
     clipboard.providers.xclip.enable = at-epita;
