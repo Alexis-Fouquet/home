@@ -312,6 +312,8 @@ in
 
       splitbelow = true;
       splitright = true;
+
+      mouse = "";
     };
 
     lsp = {
