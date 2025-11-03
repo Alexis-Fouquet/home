@@ -18,6 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-wallpaper.url = "github:lunik1/nix-wallpaper";
+    wallpkgs.url = "github:NotAShelf/wallpkgs";
 
     unstable-pkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
