@@ -32,6 +32,7 @@
       nix-flatpak,
       quickshell,
       nix-wallpaper,
+      wallpkgs,
       ...
     }:
     let
@@ -60,6 +61,7 @@
           at-epita = at-epita;
           i3 = at-epita || on-nixos;
           unstable = unstable;
+          wallpkgs = wallpkgs;
         };
       home =
         {

@@ -1,4 +1,4 @@
-{ nix-wallpaper, ... }:
+{ nix-wallpaper, wallpkgs, ... }:
 let
   theme = (
     nix-wallpaper.override {
@@ -6,15 +6,18 @@ let
     }
   );
   theme-path = "${theme}/share/wallpapers/nixos-wallpaper.png";
+  # A wallpaper from the collection wallpkgs
+  # See https://github.com/NotAShelf/wallpkgs for License
+  wallpaper = wallpkgs.wallpapers.tokyo-night.tokyo_night-03.path;
 in
 {
   services.hyprpaper = {
     enable = true;
     settings = {
       splash = true;
-      preload = [ theme-path ];
+      preload = [ theme-path wallpaper ];
       wallpaper = [
-        ", ${theme-path}"
+        ", ${wallpaper}"
       ];
     };
   };
