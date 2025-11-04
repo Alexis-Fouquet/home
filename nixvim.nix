@@ -147,6 +147,7 @@ in
           markdown_inline
           latex
           python
+          java
           qmljs
         ];
 
@@ -333,6 +334,8 @@ in
         # With a z this is better
         pylyzer.enable = false;
         pyright.enable = true;
+
+        jdtls.enable = true;
       };
 
       # Some of them are directly from the documentation
