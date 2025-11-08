@@ -95,7 +95,7 @@ in
         };
       };
       markview = {
-        enable = !at-epita;
+        enable = true;
         lazyLoad.settings = {
           ft = "markdown";
         };
@@ -149,6 +149,7 @@ in
           markdown_inline
           latex
           python
+          java
           qmljs
           c
         ];
@@ -338,6 +339,8 @@ in
         # With a z this is better
         pylyzer.enable = false;
         pyright.enable = true;
+
+        jdtls.enable = true;
       };
 
       # Some of them are directly from the documentation
