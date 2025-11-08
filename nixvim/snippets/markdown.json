@@ -1,2 +1,24 @@
 {
+    "mathbb": {
+        "prefix": "mathbb",
+        "body": [
+            "\\mathbb{$1}$0"
+        ],
+        "description": "General snippet for sets."
+    },
+    "ZZ": {
+        "prefix": "ZZ",
+        "description": "The set of relative numbers.",
+        "body": [ "\\mathbb{Z}$0" ]
+    },
+    "NN": {
+        "prefix": "NN",
+        "description": "The set of natural numbers.",
+        "body": [ "\\mathbb{N}$0" ]
+    },
+    "RR": {
+        "prefix": "RR",
+        "description": "The set of real numbers.",
+        "body": [ "\\mathbb{R}$0" ]
+    }
 }
