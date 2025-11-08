@@ -150,6 +150,7 @@ in
           latex
           python
           qmljs
+          c
         ];
 
         settings = {
