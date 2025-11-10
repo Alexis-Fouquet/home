@@ -17,7 +17,10 @@ in
 
   home.packages =
     with pkgs;
-    [ ]
+    [
+      # For image.nvim
+      luajitPackages.magick
+    ]
     ++ lib.optionals diagrams [
       mermaid-cli
       plantuml

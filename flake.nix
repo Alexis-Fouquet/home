@@ -73,7 +73,7 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home-index.nix
+            ./index.nix
           ];
           extraSpecialArgs = extra {
             username = username;
@@ -101,7 +101,7 @@
                 on-nixos = true;
                 at-epita = false;
               };
-              users.alexisf = import ./home-index.nix;
+              users.alexisf = import ./index.nix;
             };
           }
         ];

@@ -6,16 +6,12 @@
 }:
 {
   imports = [
-    ./home.nix
-    ./zsh.nix
-    ./nixvim.nix
+    ./rofi.nix
   ]
   ++ lib.optionals on-nixos [
-    ./nixos/main.nix
-    ./custom/apps.nix
+    # Should not include flatpak
   ]
   ++ lib.optionals at-epita [
-    ./epita/epita.nix
-    ./custom/apps.nix
+    ./i3.nix
   ];
 }

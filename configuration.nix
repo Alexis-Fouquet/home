@@ -8,7 +8,7 @@ in
   imports = [
     # Impure - generated per computer - impure even with a symlink
     ./hardware-configuration.nix
-    ./flatpak.nix
+    ./gui/flatpak.nix
   ];
 
   # Enable bluetooth

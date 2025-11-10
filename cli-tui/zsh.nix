@@ -37,39 +37,18 @@
         /* sh */ ''
           alias datenow="date +\"%s,%N\""
 
-          # datenow
           INSTANT_PROMPT="''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
           if [[ -r $INSTANT_PROMPT ]]; then
               source $INSTANT_PROMPT
           fi
-
-
-          # datenow
-          # echo "Start 1"
         ''
       )
-      # -------------------------------------------------------------------------
-      (lib.mkOrder 550
-        # Before
-        /* sh */ ''
-          # datenow
-          # echo "Start 2"
-        ''
-      )
-      # -------------------------------------------------------------------------
       (lib.mkOrder 1000
         # After
         /* sh */ ''
           if [[ -f ~/.p10k.zsh ]]; then
               source ~/.p10k.zsh
           fi
-        ''
-      )
-      # -------------------------------------------------------------------------
-      (lib.mkOrder 1500
-        # End of file
-        /* sh */ ''
-          # datenow
         ''
       )
     ];
