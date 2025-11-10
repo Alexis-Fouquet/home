@@ -51,7 +51,7 @@ in
   };
 
   services.displayManager.ly = {
-      enable = use_ly;
+    enable = use_ly;
   };
 
   # TODO: as I use Hyprland, I should switch gdm to wayland
@@ -87,7 +87,7 @@ in
     ];
   };
 
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
   programs.hyprland.enable = true;
   programs.hyprlock.enable = true;
 
@@ -99,7 +99,6 @@ in
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-    vim
     git
     gnumake
     libnotify
@@ -119,7 +118,6 @@ in
   nixpkgs.config.allowUnfreePredicate =
     p:
     builtins.elem (lib.getName p) [
-      "obsidian"
     ];
 
   # TODO: find a way to add this in the dev flake
