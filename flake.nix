@@ -62,6 +62,7 @@
           i3 = at-epita || on-nixos;
           unstable = unstable;
           wallpkgs = wallpkgs;
+          grammar = pkgs.vimPlugins.nvim-treesitter.builtGrammars;
         };
       home =
         {

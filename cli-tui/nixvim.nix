@@ -1,30 +1,16 @@
 {
   nixvim,
   lib,
-  pkgs,
+  grammar,
   on-nixos,
   at-epita,
   debug,
   ...
 }:
-let
-  diagrams = false && !at-epita;
-in
 {
   imports = [
     nixvim.homeManagerModules.nixvim
   ];
-
-  home.packages =
-    with pkgs;
-    [
-      # For image.nvim
-      luajitPackages.magick
-    ]
-    ++ lib.optionals diagrams [
-      mermaid-cli
-      plantuml
-    ];
 
   programs.ripgrep.enable = true;
 
@@ -62,47 +48,10 @@ in
       fugitive = {
         enable = true;
         # LazyLoad not yet implemented for this plugin
-        /*
-          lazyLoad.settings = {
-              cmd = [
-              "Git"
-              ];
-          };
-        */
       };
       gitsigns.enable = true;
 
-      obsidian = {
-        enable = !at-epita;
-        # TODO: detect repository
-        lazyLoad.settings = {
-          ft = "md";
-        };
-      };
-      vimwiki = {
-        # Breaks everything by changing the filetype
-        enable = false;
-        settings = {
-          filetypes = [ "markdown" ];
-        };
-        # LazyLoad not yet implemented for this plugin
-      };
-      render-markdown = {
-        enable = false;
-        lazyLoad.settings = {
-          ft = "markdown";
-        };
-      };
-      markview = {
-        enable = true;
-        lazyLoad.settings = {
-          ft = "markdown";
-        };
-      };
       vimtex.enable = !at-epita;
-      diagram = {
-        enable = diagrams;
-      };
 
       nvim-snippets = {
         enable = true;
@@ -118,20 +67,6 @@ in
         };
       };
 
-      luasnip = {
-        enable = false;
-        filetypeExtend = {
-          markdown = [
-            "tex"
-            "latex"
-          ];
-        };
-      };
-
-      friendly-snippets = {
-        enable = false;
-      };
-
       nvim-autopairs = {
         enable = true;
         lazyLoad.settings.event = "BufEnter";
@@ -140,12 +75,10 @@ in
       treesitter = {
         enable = true;
 
-        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        grammarPackages = with grammar; [
           rust
           lua
           nix
-          markdown
-          markdown_inline
           latex
           python
           java
@@ -156,11 +89,6 @@ in
         settings = {
           highlight.enable = true;
         };
-      };
-
-      image = {
-        enable = true;
-        lazyLoad.settings.event = "DeferredUIEnter";
       };
 
       lspconfig.enable = true;
