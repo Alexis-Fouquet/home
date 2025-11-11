@@ -57,10 +57,6 @@ in
 
       web-devicons.enable = true;
       notify.enable = true;
-      smear-cursor = {
-        enable = false;
-        lazyLoad.settings.event = "BufEnter";
-      };
       lualine.enable = true;
 
       fugitive = {

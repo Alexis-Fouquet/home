@@ -11,14 +11,12 @@
   # Should not change
   home.stateVersion = "24.11";
 
-  home.packages =
-    with pkgs;
-    [
-      nerd-fonts.fantasque-sans-mono
-      # Trying to fix symbols size on waybar
-      nerd-fonts.symbols-only
-      # python313Packages.pylatexenc
-    ];
+  home.packages = with pkgs; [
+    nerd-fonts.fantasque-sans-mono
+    # Trying to fix symbols size on waybar
+    nerd-fonts.symbols-only
+    # python313Packages.pylatexenc
+  ];
   fonts.fontconfig.enable = true;
 
   home.sessionVariables = {

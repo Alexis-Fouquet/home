@@ -15,7 +15,10 @@ in
     enable = true;
     settings = {
       splash = true;
-      preload = [ theme-path wallpaper ];
+      preload = [
+        theme-path
+        wallpaper
+      ];
       wallpaper = [
         ", ${wallpaper}"
       ];

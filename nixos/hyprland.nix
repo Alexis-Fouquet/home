@@ -7,8 +7,7 @@ let
   terminal = "kitty";
   drun = "rofi -show drun -show-icons";
   toggleNotifications = "swaync-client -t -sw";
-  forEachProperty =
-    properties: object: lib.lists.forEach properties (x: x + object);
+  forEachProperty = properties: object: lib.lists.forEach properties (x: x + object);
 in
 {
   home.packages = with pkgs; [

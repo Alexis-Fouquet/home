@@ -1,6 +1,6 @@
 { ... }:
 {
-    programs = {
+  programs = {
     fd.enable = true;
     bat.enable = true;
     eza = {
@@ -13,5 +13,5 @@
       enableZshIntegration = true;
       options = [ "--cmd cd" ];
     };
-    };
+  };
 }
