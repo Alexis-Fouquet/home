@@ -1,6 +1,6 @@
 
 # Makefile for quick usage of nix commands
-.PHONY: full reload-os update reload-home
+.PHONY: full reload-os flake.lock reload-home
 # If switching again to nom instead of nh
 # nom = |& { command -v nom && nom || cat; }
 
