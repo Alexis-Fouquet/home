@@ -49,7 +49,6 @@ in
       "${mod} ${alt}, TAB, workspace, m-1"
       "${mod} ${alt2}, TAB, workspace, emptynm"
 
-      "${mod}, E, exit,"
       "${mod}, A, hyprexpo:expo, toggle"
 
       "${mod}, N, exec, ${toggleNotifications}"
