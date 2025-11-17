@@ -52,11 +52,9 @@
           username = username;
           userpath = userpath;
           on-nixos = on-nixos;
-          quickshell = quickshell.packages.${system}.default;
+          qs-pkg = quickshell.packages.${system}.default;
           nix-wallpaper = nix-wallpaper.packages.${system}.default;
-          waybar = true;
-          qs = false;
-          hyprpanel = false;
+          qs = true;
           debug = false;
           at-epita = at-epita;
           i3 = at-epita || on-nixos;
