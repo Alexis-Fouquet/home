@@ -98,6 +98,7 @@ in
 
   services.flatpak.enable = true;
   services.upower.enable = true;
+  qt.enable = true;
 
   environment.systemPackages = with pkgs; [
     git

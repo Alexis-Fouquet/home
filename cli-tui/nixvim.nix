@@ -260,6 +260,7 @@
         texlab.enable = true;
         qmlls = {
             enable = true;
+            config.cmd = [ "qmlls" "-E" ];
         };
 
         # Testing python
