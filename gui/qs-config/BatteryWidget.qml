@@ -7,7 +7,7 @@ Rectangle {
         id: layout
         anchors.centerIn: parent
         Repeater {
-            model: UPower.devices
+            model: UPower.displayDevice
 
             delegate: Rectangle {
                 required property UPowerDevice modelData
@@ -17,10 +17,10 @@ Rectangle {
                 Text {
                     id: ch
                     text: {
-                        (p.modelData.percentage * 100) + "%"
+                        Math.round(p.modelData.percentage * 100) + "%"
                     }
                     color: {
-                        p.modelData.isLaptopBattery ? "#AAEEEE" : "#AAAAAA"
+                        UPower.onBattery ? "#EEAAAA" : "#AAEEAA"
                     }
                     anchors.centerIn: parent
                 }
@@ -32,6 +32,6 @@ Rectangle {
     }
 
     color: "transparent"
-    implicitHeight: layout.implicitHeight + 15
-    implicitWidth: layout.implicitWidth + 20
+    implicitHeight: layout.implicitHeight
+    implicitWidth: layout.implicitWidth
 }
