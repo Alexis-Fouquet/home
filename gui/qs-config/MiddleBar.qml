@@ -22,6 +22,7 @@ Scope {
           anchors.centerIn: parent
           ClockWidget { }
           WorkspaceWidget { }
+          BatteryWidget { }
       }
     }
   }

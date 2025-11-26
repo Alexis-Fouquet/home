@@ -19,7 +19,13 @@ Rectangle {
         hoverEnabled: true
     }
 
+    color: "#333333AA"
     implicitHeight: layout.implicitHeight + 15
     implicitWidth: layout.implicitWidth + 20
-    color: "#333333AA"
+
+    Behavior on implicitWidth {
+        PropertyAnimation {
+            duration: 100
+        }
+    }
 }
