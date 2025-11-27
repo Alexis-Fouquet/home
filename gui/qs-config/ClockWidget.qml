@@ -19,7 +19,7 @@ Rectangle {
         hoverEnabled: true
     }
 
-    color: "#333333AA"
+    color: "#CC222255"
     implicitHeight: layout.implicitHeight + 15
     implicitWidth: layout.implicitWidth + 20
 

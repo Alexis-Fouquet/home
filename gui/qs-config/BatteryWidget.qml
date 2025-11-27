@@ -11,7 +11,7 @@ Rectangle {
 
             delegate: Rectangle {
                 required property UPowerDevice modelData
-                color: "#333333AA"
+                color: "#CC222255"
                 id: p
 
                 Text {

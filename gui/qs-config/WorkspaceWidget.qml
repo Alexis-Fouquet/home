@@ -33,5 +33,5 @@ Rectangle {
 
     implicitHeight: layout.implicitHeight + 15
     implicitWidth: layout.implicitWidth + 20
-    color: "#333333AA"
+    color: "#CC222255"
 }
