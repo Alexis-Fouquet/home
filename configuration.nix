@@ -54,14 +54,9 @@ in
     enable = use_ly;
   };
 
-  # TODO: as I use Hyprland, I should switch gdm to wayland
-  services.xserver.enable = use_gdm;
-  services.xserver.xkb = {
-    layout = "fr";
-    variant = "azerty";
-  };
+  services.xserver.enable = false;
 
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = use_gdm;
     wayland = true;
   };
