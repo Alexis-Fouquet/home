@@ -3,7 +3,7 @@
   programs.git = {
     enable = true;
     settings = {
-      aliases = {
+      alias = {
         # Inspired by a command on stackoverflow
         adog = "log --all --decorate --oneline --graph";
       };
