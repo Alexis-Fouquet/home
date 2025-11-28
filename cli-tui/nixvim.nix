@@ -9,7 +9,7 @@
 }:
 {
   imports = [
-    nixvim.homeManagerModules.nixvim
+    nixvim.homeModules.nixvim
   ];
 
   programs.ripgrep.enable = true;
@@ -56,12 +56,6 @@
       nvim-snippets = {
         enable = true;
         settings = {
-          /*
-            Too slow, look at this later
-            extended_filetypes = {
-                markdown = [ "tex" "latex" ];
-            };
-          */
           friendly_snippets = false;
           create_cmp_source = true;
         };
@@ -204,13 +198,10 @@
           };
         };
 
-        # Was not a good idea
-        # lazyLoad.settings.event = "BufEnter";
+        # Was not a good idea to lazy load
       };
       lspkind = {
         enable = true;
-        # LazyLoad not yet implemented for this plugin
-        # lazyLoad.settings.event = "BufEnter";
       };
     };
 
@@ -251,7 +242,7 @@
       servers = {
         nixd = {
           enable = true;
-          settings.settings.nixd.formatting = {
+          config.settings.nixd.formatting = {
             command = "nixfmt --width 80";
           };
         };
