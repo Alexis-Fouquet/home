@@ -231,6 +231,7 @@
       },
       "original": {
         "owner": "nix-community",
+        "ref": "nixos-25.11",
         "repo": "nixvim",
         "type": "github"
       }
