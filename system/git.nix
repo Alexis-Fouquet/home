@@ -10,6 +10,7 @@
       # Public email for github
       user.email = "144385093+Alexis-Fouquet@users.noreply.github.com";
       user.name = "Alexis Fouquet";
+      core.editor = "nvim";
     };
     lfs.enable = true;
     signing = {
