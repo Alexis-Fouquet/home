@@ -1,4 +1,9 @@
-{ pkgs, lib, qs, ... }:
+{
+  pkgs,
+  lib,
+  qs,
+  ...
+}:
 let
   mod = "SUPER";
   alt = "SHIFT";

@@ -250,8 +250,11 @@
         rust_analyzer.enable = true;
         texlab.enable = true;
         qmlls = {
-            enable = true;
-            config.cmd = [ "qmlls" "-E" ];
+          enable = true;
+          config.cmd = [
+            "qmlls"
+            "-E"
+          ];
         };
 
         # Testing python
