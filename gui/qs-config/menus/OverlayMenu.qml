@@ -6,9 +6,12 @@ import QtQuick.Layouts
 import Quickshell.Wayland
 
 Variants {
-  model: Quickshell.screens
   default property list<ButtonObject> buttons
   id: root
+
+  function start() {
+      model = Quickshell.screens;
+  }
 
   PanelWindow {
     id: panel
@@ -19,7 +22,9 @@ Variants {
     WlrLayershell.layer: WlrLayer.Overlay
     exclusionMode: ExclusionMode.Ignore
 
-    mask: layout
+    mask: Region {
+        item: layout
+    }
     color: "transparent"
 
     implicitWidth: layout.width
@@ -27,7 +32,6 @@ Variants {
 
     GridLayout {
         id: layout
-        anchors.centerIn: panel
 
         columns: 2
 
@@ -38,16 +42,38 @@ Variants {
                 required property ButtonObject modelData;
                 id: parent
 
-                color: "red"
+                color: "#BBA0B0C0"
                 border.color: "black"
                 border.width: 3
 
                 width: 100
                 height: 100
 
-                Text {
+                function exec() {
+                    console.log("Action executed");
+                    modelData.exec();
+                    root.model = [];
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: parent.exec()
+                }
+
+                ColumnLayout {
                     anchors.centerIn: parent
-                    text: parent.modelData.text
+
+                    Text {
+                        text: parent.modelData.icon
+                        Layout.alignment: Qt.AlignCenter
+                        font.pointSize: 30
+                    }
+
+                    Text {
+                        text: parent.modelData.text
+                        Layout.alignment: Qt.AlignCenter
+                    }
                 }
             }
         }

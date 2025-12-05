@@ -14,11 +14,13 @@ Rectangle {
                 color: "#CC222255"
                 id: p
 
+                function getBattery() {
+                    return Math.round(p.modelData.percentage * 100) + "%";
+                }
+
                 Text {
                     id: ch
-                    text: {
-                        Math.round(p.modelData.percentage * 100) + "%"
-                    }
+                    text: getBattery()
                     color: {
                         UPower.onBattery ? "#EEAAAA" : "#AAEEAA"
                     }

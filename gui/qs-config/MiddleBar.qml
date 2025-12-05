@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick.Layouts
+import "menus"
 
 Scope {
   Variants {
@@ -23,6 +24,9 @@ Scope {
           ClockWidget { }
           WorkspaceWidget { }
           BatteryWidget { }
+          MenusWidget {
+              exit: Exit { }
+          }
       }
     }
   }

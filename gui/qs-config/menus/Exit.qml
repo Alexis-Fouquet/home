@@ -3,22 +3,35 @@ import QtQuick
 
 Scope {
     OverlayMenu {
+        id: win
+
         ButtonObject {
             command: "shutdown 0"
             text: "Shutdown"
-            icon: "a"
+            icon: ""
         }
 
         ButtonObject {
-            command: "a"
-            text: "a"
-            icon: "a"
+            command: "hyprlock"
+            text: "Lock"
+            icon: "󰷛"
         }
 
         ButtonObject {
-            command: "a"
-            text: "a"
-            icon: "a"
+            command: "notify-send 'Not yet implemented'"
+            text: "Logout"
+            icon: "󱋟"
         }
+
+        ButtonObject {
+            command: ""
+            text: "Cancel"
+            icon: "󰜺"
+        }
+    }
+
+    function start() {
+        console.log("Starting menu");
+        win.start();
     }
 }
