@@ -37,6 +37,9 @@ in
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
+  console.keyMap = "fr";
+  # Only for gdm, does not activate xserver
+  services.xserver.xkb.layout = "fr";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
@@ -61,7 +64,6 @@ in
     wayland = true;
   };
 
-  console.keyMap = "fr";
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
