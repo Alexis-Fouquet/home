@@ -15,12 +15,13 @@ Rectangle {
                 id: p
 
                 function getBattery() {
-                    return Math.round(p.modelData.percentage * 100) + "%";
+                    var rounded = Math.round(p.modelData.percentage * 100);
+                    return "  " + rounded + "%";
                 }
 
                 Text {
                     id: ch
-                    text: getBattery()
+                    text: p.getBattery()
                     color: {
                         UPower.onBattery ? "#EEAAAA" : "#AAEEAA"
                     }

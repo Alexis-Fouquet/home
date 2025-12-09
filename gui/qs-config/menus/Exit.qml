@@ -18,9 +18,9 @@ Scope {
         }
 
         ButtonObject {
-            command: "notify-send 'Not yet implemented'"
-            text: "Logout"
-            icon: "󱋟"
+            command: "reboot"
+            text: "Reboot"
+            icon: "󰑓"
         }
 
         ButtonObject {

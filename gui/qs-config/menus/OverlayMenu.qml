@@ -6,77 +6,77 @@ import QtQuick.Layouts
 import Quickshell.Wayland
 
 Variants {
-  default property list<ButtonObject> buttons
-  id: root
+    default property list<ButtonObject> buttons
+    id: root
 
-  function start() {
-      model = Quickshell.screens;
-  }
-
-  PanelWindow {
-    id: panel
-
-    required property var modelData
-    screen: modelData
-
-    WlrLayershell.layer: WlrLayer.Overlay
-    exclusionMode: ExclusionMode.Ignore
-
-    mask: Region {
-        item: layout
+    function start() {
+        model = Quickshell.screens;
     }
-    color: "transparent"
 
-    implicitWidth: layout.width
-    implicitHeight: layout.height
+    PanelWindow {
+        id: panel
 
-    GridLayout {
-        id: layout
+        required property var modelData
+        screen: modelData
 
-        columns: 2
+        WlrLayershell.layer: WlrLayer.Overlay
+        exclusionMode: ExclusionMode.Ignore
 
-        Repeater {
-            model: root.buttons
+        mask: Region {
+            item: layout
+        }
+        color: "transparent"
 
-            Rectangle {
-                required property ButtonObject modelData;
-                id: parent
+        implicitWidth: layout.width
+        implicitHeight: layout.height
 
-                color: "#BBA0B0C0"
-                border.color: "black"
-                border.width: 3
+        GridLayout {
+            id: layout
 
-                width: 100
-                height: 100
+            columns: 2
 
-                function exec() {
-                    console.log("Action executed");
-                    modelData.exec();
-                    root.model = [];
-                }
+            Repeater {
+                model: root.buttons
 
-                MouseArea {
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: parent.exec()
-                }
+                Rectangle {
+                    required property ButtonObject modelData;
+                    id: parent
 
-                ColumnLayout {
-                    anchors.centerIn: parent
+                    color: "#BBA0B0C0"
+                    border.color: "black"
+                    border.width: 3
 
-                    Text {
-                        text: parent.modelData.icon
-                        Layout.alignment: Qt.AlignCenter
-                        font.pointSize: 30
+                    width: 100
+                    height: 100
+
+                    function exec() {
+                        console.log("Action executed");
+                        modelData.exec();
+                        root.model = [];
                     }
 
-                    Text {
-                        text: parent.modelData.text
-                        Layout.alignment: Qt.AlignCenter
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onClicked: parent.exec()
+                    }
+
+                    ColumnLayout {
+                        anchors.centerIn: parent
+
+                        Text {
+                            text: parent.modelData.icon
+                            Layout.alignment: Qt.AlignCenter
+                            font.pointSize: 30
+                        }
+
+                        Text {
+                            text: parent.modelData.text
+                            Layout.alignment: Qt.AlignCenter
+                        }
                     }
                 }
             }
         }
     }
-  }
 }
