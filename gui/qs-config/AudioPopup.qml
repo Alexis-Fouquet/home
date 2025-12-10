@@ -49,39 +49,47 @@ Scope {
                 }
 
                 Shape {
+                    id: shape
+                    anchors.fill: parent
                     anchors.centerIn: parent
 
                     preferredRendererType: Shape.CurveRenderer
 
                     ShapePath {
                         fillColor: "transparent"
-                        strokeColor: "white"
+                        strokeColor: "#80100000"
                         strokeWidth: 5
-                        capStyle: ShapePath.RoundJoin
+                        capStyle: ShapePath.RoundCap
 
                         PathAngleArc {
-                            centerX: 40
-                            centerY: 40
+                            centerX: shape.width / 2
+                            centerY: shape.height / 2
                             radiusX: 35
                             radiusY: 35
-                            startAngle: -90
-                            sweepAngle: (Pipewire.defaultAudioSink?.audio.volume ?? 0) * 360
+                            startAngle: 0
+                            sweepAngle: 360
                         }
                     }
 
                     ShapePath {
                         fillColor: "transparent"
-                        strokeColor: "#80100000"
+                        strokeColor: "white"
                         strokeWidth: 5
-                        capStyle: ShapePath.RoundJoin
+                        capStyle: ShapePath.RoundCap
 
                         PathAngleArc {
-                            centerX: 40
-                            centerY: 40
+                            centerX: shape.width / 2
+                            centerY: shape.height / 2
                             radiusX: 35
                             radiusY: 35
-                            startAngle: 0
-                            sweepAngle: 360
+                            startAngle: -90
+                            sweepAngle: (Pipewire.defaultAudioSink?.audio.volume ?? 0) * 360
+
+                            Behavior on sweepAngle {
+                                PropertyAnimation {
+                                    duration: 100
+                                }
+                            }
                         }
                     }
                 }
