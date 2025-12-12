@@ -1,3 +1,4 @@
+import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import "menus"
@@ -5,6 +6,7 @@ import "menus"
 Rectangle {
     id: root
     required property Exit exit
+    required property PanelWindow window
 
     RowLayout {
         id: layout
@@ -41,6 +43,11 @@ Rectangle {
                 font.pointSize: 10
                 anchors.centerIn: parent
             }
+        }
+
+        SystemTraysList {
+            window: root.window
+            visible: mouse.containsMouse
         }
     }
 

@@ -9,6 +9,7 @@ Scope {
     PanelWindow {
       required property var modelData
       screen: modelData
+      id: root
 
       anchors {
         top: true
@@ -26,6 +27,7 @@ Scope {
           BatteryWidget { }
           MenusWidget {
               exit: Exit { }
+              window: root
           }
       }
     }

@@ -265,6 +265,8 @@
         pyright.enable = true;
 
         jdtls.enable = true;
+
+        asm_lsp.enable = true;
       };
 
       # Some of them are directly from the documentation
