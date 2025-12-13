@@ -45,7 +45,7 @@ in
       markview = {
         enable = true;
         lazyLoad.settings = {
-          ft = "markdown";
+          ft = ["markdown"];
         };
       };
 

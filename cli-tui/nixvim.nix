@@ -86,6 +86,7 @@
       };
 
       lspconfig.enable = true;
+      no-neck-pain.enable = true;
 
       cmp = {
         enable = true;
