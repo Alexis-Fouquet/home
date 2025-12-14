@@ -87,6 +87,7 @@
 
       lspconfig.enable = true;
       no-neck-pain.enable = true;
+      csvview.enable = true;
 
       cmp = {
         enable = true;
