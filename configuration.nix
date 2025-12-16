@@ -37,6 +37,9 @@ in
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
+  console.keyMap = "fr";
+  # Only for gdm, does not activate xserver
+  services.xserver.xkb.layout = "fr";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
@@ -54,19 +57,13 @@ in
     enable = use_ly;
   };
 
-  # TODO: as I use Hyprland, I should switch gdm to wayland
-  services.xserver.enable = use_gdm;
-  services.xserver.xkb = {
-    layout = "fr";
-    variant = "azerty";
-  };
+  services.xserver.enable = false;
 
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = use_gdm;
     wayland = true;
   };
 
-  console.keyMap = "fr";
   services.printing.enable = true;
 
   services.pulseaudio.enable = false;
@@ -98,6 +95,7 @@ in
 
   services.flatpak.enable = true;
   services.upower.enable = true;
+  qt.enable = true;
 
   environment.systemPackages = with pkgs; [
     git

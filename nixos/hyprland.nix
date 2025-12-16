@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  qs,
+  ...
+}:
 let
   mod = "SUPER";
   alt = "SHIFT";
@@ -8,6 +13,7 @@ let
   drun = "rofi -show drun -show-icons";
   toggleNotifications = "swaync-client -t -sw";
   forEachProperty = properties: object: lib.lists.forEach properties (x: x + object);
+  cpath = "~/.config/home-manager/gui/qs-config";
 in
 {
   home.packages = with pkgs; [
@@ -86,6 +92,9 @@ in
 
     exec-once = [
       "${terminal} --hold zsh -c \"cbonsai -lim \"Hello!\"\""
+    ]
+    ++ lib.optionals qs [
+      "qs --path ${cpath}"
     ];
 
     input = {

@@ -2,6 +2,7 @@
   lib,
   on-nixos,
   at-epita,
+  qs,
   ...
 }:
 {
@@ -13,5 +14,8 @@
   ]
   ++ lib.optionals at-epita [
     ./i3.nix
+  ]
+  ++ lib.optionals qs [
+    ./qs.nix
   ];
 }
