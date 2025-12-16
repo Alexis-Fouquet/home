@@ -84,6 +84,7 @@
           java
           qmljs
           c
+          sql
         ];
 
         settings = {
