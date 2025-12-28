@@ -12,8 +12,8 @@ Scope {
         }
 
         ButtonObject {
-            command: "hyprlock"
-            text: "Lock"
+            command: "hyprctl dispatch exit"
+            text: "Logout"
             icon: "󰷛"
         }
 
