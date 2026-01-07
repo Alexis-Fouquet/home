@@ -214,6 +214,7 @@
       shiftwidth = 4;
       tabstop = 4;
 
+      scrolloff = 6;
       colorcolumn = "80";
       signcolumn = "yes";
       cursorline = true;
