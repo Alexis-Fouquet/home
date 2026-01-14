@@ -2,7 +2,6 @@
   lib,
   on-nixos,
   at-epita,
-  userpath,
   ...
 }:
 {
@@ -21,12 +20,12 @@
     ./other.nix
   ];
 
-  home.file = {
-    "${userpath}/.config/nvim/snippets" = {
+  xdg.configFile = {
+    "nvim/snippets" = {
       source = ./nixvim/snippets;
       recursive = true;
     };
-    "${userpath}/.config/television/cable/nix-search-tv-fixed.toml" = {
+    "television/cable/nix-search-tv-fixed.toml" = {
       source = ./nix.toml;
     };
   };

@@ -88,6 +88,7 @@
 
       lspconfig.enable = true;
       no-neck-pain.enable = true;
+      csvview.enable = true;
 
       cmp = {
         enable = true;
@@ -214,6 +215,7 @@
       shiftwidth = 4;
       tabstop = 4;
 
+      scrolloff = 6;
       colorcolumn = "80";
       signcolumn = "yes";
       cursorline = true;

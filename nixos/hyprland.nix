@@ -41,7 +41,7 @@ in
       "${mod}, B, exec, ${browser}"
       "${mod}, D, exec, ${drun}"
       "${mod}, RETURN, exec, ${terminal}"
-      "${mod}, L, exec, hyprlock"
+      "${mod} ${alt}, L, exec, hyprlock"
 
       /* Windows */
       "${mod}, Q, killactive,"
@@ -55,11 +55,17 @@ in
       "${mod} ${alt}, TAB, workspace, m-1"
       "${mod} ${alt2}, TAB, workspace, emptynm"
 
-      "${mod}, A, hyprexpo:expo, toggle"
+      # TODO: find why this generates a warning
+      # "${mod}, A, hyprexpo:expo, toggle"
 
       "${mod}, N, exec, ${toggleNotifications}"
 
       "${mod}, S, exec, hyprshot -m region"
+
+      "${mod}, H, movefocus, l"
+      "${mod}, J, movefocus, u"
+      "${mod}, K, movefocus, d"
+      "${mod}, L, movefocus, r"
     ]
     ++ (
       # Half from the Hyprland documentation about Nix
