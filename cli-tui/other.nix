@@ -5,5 +5,6 @@
     libqalculate
     nix-search-tv
     asciinema
+    rlwrap
   ];
 }
