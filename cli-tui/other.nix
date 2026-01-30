@@ -7,5 +7,8 @@
     asciinema
     rlwrap
     lf
+    matugen
+    cava
+    power-profiles-daemon
   ];
 }

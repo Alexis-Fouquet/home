@@ -17,6 +17,14 @@
       url = "github:quickshell-mirror/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+        url = "github:AvengeMedia/DankMaterialShell/stable";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dgop = {
+        url = "github:AvengeMedia/dgop";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-wallpaper.url = "github:lunik1/nix-wallpaper";
     wallpkgs.url = "github:NotAShelf/wallpkgs";
 
@@ -33,6 +41,8 @@
       quickshell,
       nix-wallpaper,
       wallpkgs,
+      dms,
+      dgop,
       ...
     }:
     let
@@ -61,6 +71,8 @@
           unstable = unstable;
           wallpkgs = wallpkgs;
           grammar = pkgs.vimPlugins.nvim-treesitter.builtGrammars;
+          dms = dms;
+          dgop = dgop;
         };
       home =
         {

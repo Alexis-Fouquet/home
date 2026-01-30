@@ -59,7 +59,8 @@ layout {
     }
 }
 
-spawn-sh-at-startup "qs -c ~/.config/home-manager/gui/qs-config/"
+// spawn-sh-at-startup "qs -c ~/.config/home-manager/gui/qs-config/"
+// spawn-sh-at-startup "dms run"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot_from_%Y-%m-%d_%H-%M-%S.png"
