@@ -6,5 +6,6 @@
     nix-search-tv
     asciinema
     rlwrap
+    lf
   ];
 }
