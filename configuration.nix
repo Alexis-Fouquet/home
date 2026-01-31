@@ -119,6 +119,7 @@ in
   nixpkgs.config.allowUnfreePredicate =
     p:
     builtins.elem (lib.getName p) [
+    "idea"
     ];
 
   # TODO: find a way to add this in the dev flake

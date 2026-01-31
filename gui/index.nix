@@ -11,6 +11,7 @@
   ]
   ++ lib.optionals on-nixos [
     # Should not include flatpak
+    ./other.nix
   ]
   ++ lib.optionals at-epita [
     ./i3.nix
