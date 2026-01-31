@@ -9,6 +9,5 @@
     lf
     matugen
     cava
-    power-profiles-daemon
   ];
 }
