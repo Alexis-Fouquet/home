@@ -21,6 +21,9 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    # DISPLAY = ":1";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   home.sessionPath = [

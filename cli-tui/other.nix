@@ -9,5 +9,6 @@
     lf
     matugen
     cava
+    maven
   ];
 }

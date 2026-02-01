@@ -58,6 +58,7 @@ in
   };
 
   services.xserver.enable = false;
+  programs.xwayland.enable = true;
 
   services.displayManager.gdm = {
     enable = use_gdm;
@@ -106,6 +107,7 @@ in
     man-pages
     man-pages-posix
     nixfmt-rfc-style
+    xwayland-satellite
   ];
   environment.pathsToLink = [ "/share/zsh" ];
 
