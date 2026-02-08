@@ -25,7 +25,7 @@ in
   ];
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     package = null;
     portalPackage = null;
   };
@@ -41,7 +41,7 @@ in
       "${mod}, B, exec, ${browser}"
       "${mod}, D, exec, ${drun}"
       "${mod}, RETURN, exec, ${terminal}"
-      "${mod} ${alt}, L, exec, hyprlock"
+      "${mod} ${alt}, L, exec, dms ipc call lock lock"
 
       /* Windows */
       "${mod}, Q, killactive,"

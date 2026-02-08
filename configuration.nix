@@ -86,9 +86,9 @@ in
   };
 
   programs.firefox.enable = false;
-  programs.hyprland.enable = true;
+  programs.hyprland.enable = false;
   programs.niri.enable = true;
-  programs.hyprlock.enable = true;
+  programs.hyprlock.enable = false;
 
   # Should restart after editing this
   systemd.user.services.hypridle = {
