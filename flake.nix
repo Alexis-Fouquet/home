@@ -25,6 +25,13 @@
         url = "github:AvengeMedia/dgop";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake/beta";
+      inputs = {
+        nixpkgs.follows = "unstable-pkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
     nix-wallpaper.url = "github:lunik1/nix-wallpaper";
     wallpkgs.url = "github:NotAShelf/wallpkgs";
 
@@ -41,6 +48,7 @@
       quickshell,
       nix-wallpaper,
       wallpkgs,
+      zen-browser,
       dms,
       dgop,
       ...
@@ -73,6 +81,7 @@
           grammar = pkgs.vimPlugins.nvim-treesitter.builtGrammars;
           dms = dms;
           dgop = dgop;
+          zen-browser = zen-browser;
         };
       home =
         {

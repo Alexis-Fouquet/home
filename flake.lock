@@ -377,7 +377,8 @@
         "nixvim": "nixvim",
         "quickshell": "quickshell_2",
         "unstable-pkgs": "unstable-pkgs",
-        "wallpkgs": "wallpkgs"
+        "wallpkgs": "wallpkgs",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -453,6 +454,30 @@
       "original": {
         "owner": "NotAShelf",
         "repo": "wallpkgs",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "unstable-pkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770416716,
+        "narHash": "sha256-80KR/xJfP9F95IMMXjJc8q+N/UP40TLb0OoAGktRmTE=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "9616286ab63464a302b7879aaf37173d4047cb74",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "ref": "beta",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }
