@@ -95,7 +95,7 @@ in
     path = [ pkgs.libnotify ];
   };
 
-  services.flatpak.enable = true;
+  services.flatpak.enable = false;
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   qt.enable = true;
