@@ -1,4 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  game-mode,
+  config,
+  ...
+}:
 let
   use_ly = false;
   use_gdm = true;
@@ -38,6 +44,7 @@ in
 
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "fr";
+
   # Only for gdm, does not activate xserver
   services.xserver.xkb.layout = "fr";
 
@@ -121,15 +128,29 @@ in
   nixpkgs.config.allowUnfreePredicate =
     p:
     builtins.elem (lib.getName p) [
-    "idea"
+      "idea"
+      "nvidia-x11"
+      "nvidia-settings"
     ];
 
-  # TODO: find a way to add this in the dev flake
   virtualisation.docker.enable = true;
 
   documentation = {
     enable = true;
     man.enable = true;
     dev.enable = true;
+  };
+
+  # Games config
+  services.xserver.videoDrivers = lib.mkIf game-mode [ "nvidia" ];
+  hardware.graphics = lib.mkIf game-mode {
+    enable = true;
+  };
+  hardware.nvidia = lib.mkIf game-mode {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }

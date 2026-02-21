@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, game-mode, ... }:
 {
   home.packages = with pkgs; [
     # TODO: why I have this?
