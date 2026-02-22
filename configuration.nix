@@ -131,6 +131,8 @@ in
       "idea"
       "nvidia-x11"
       "nvidia-settings"
+      "steam"
+      "steam-unwrapped"
     ];
 
   virtualisation.docker.enable = true;
@@ -153,4 +155,11 @@ in
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+  programs.steam = lib.mkIf game-mode {
+      enable = true;
+  };
+  programs.gamemode = lib.mkIf game-mode {
+      enable = true;
+  };
+  nixpkgs.config.cudaSupport = lib.mkIf game-mode true;
 }
