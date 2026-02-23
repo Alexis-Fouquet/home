@@ -39,7 +39,7 @@
   };
 
   outputs =
-    args@{
+    {
       nixpkgs,
       unstable-pkgs,
       home-manager,
@@ -73,7 +73,7 @@
           on-nixos = on-nixos;
           qs-pkg = quickshell.packages.${system}.default;
           nix-wallpaper = nix-wallpaper.packages.${system}.default;
-          qs = true;
+          qs = on-nixos;
           debug = false;
           at-epita = at-epita;
           i3 = at-epita || on-nixos;
