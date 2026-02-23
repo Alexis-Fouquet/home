@@ -1,4 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  game-mode,
+  config,
+  ...
+}:
 let
   use_ly = false;
   use_gdm = true;
@@ -38,6 +44,7 @@ in
 
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "fr";
+
   # Only for gdm, does not activate xserver
   services.xserver.xkb.layout = "fr";
 
@@ -58,6 +65,7 @@ in
   };
 
   services.xserver.enable = false;
+  programs.xwayland.enable = true;
 
   services.displayManager.gdm = {
     enable = use_gdm;
@@ -85,17 +93,18 @@ in
   };
 
   programs.firefox.enable = false;
-  programs.hyprland.enable = true;
+  programs.hyprland.enable = false;
   programs.niri.enable = true;
-  programs.hyprlock.enable = true;
+  programs.hyprlock.enable = false;
 
   # Should restart after editing this
   systemd.user.services.hypridle = {
     path = [ pkgs.libnotify ];
   };
 
-  services.flatpak.enable = true;
+  services.flatpak.enable = false;
   services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
   qt.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -105,6 +114,7 @@ in
     man-pages
     man-pages-posix
     nixfmt-rfc-style
+    xwayland-satellite
   ];
   environment.pathsToLink = [ "/share/zsh" ];
 
@@ -118,9 +128,13 @@ in
   nixpkgs.config.allowUnfreePredicate =
     p:
     builtins.elem (lib.getName p) [
+      "idea"
+      "nvidia-x11"
+      "nvidia-settings"
+      "steam"
+      "steam-unwrapped"
     ];
 
-  # TODO: find a way to add this in the dev flake
   virtualisation.docker.enable = true;
 
   documentation = {
@@ -128,4 +142,24 @@ in
     man.enable = true;
     dev.enable = true;
   };
+
+  # Games config
+  services.xserver.videoDrivers = lib.mkIf game-mode [ "nvidia" ];
+  hardware.graphics = lib.mkIf game-mode {
+    enable = true;
+  };
+  hardware.nvidia = lib.mkIf game-mode {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+  programs.steam = lib.mkIf game-mode {
+      enable = true;
+  };
+  programs.gamemode = lib.mkIf game-mode {
+      enable = true;
+  };
+  nixpkgs.config.cudaSupport = lib.mkIf game-mode true;
 }

@@ -21,6 +21,10 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    # DISPLAY = ":1";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    LD_LIBRARY_PATH = "/run/opengl-driver/lib:${pkgs.stdenv.cc.cc.lib}/lib";
   };
 
   home.sessionPath = [

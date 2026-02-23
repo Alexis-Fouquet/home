@@ -11,6 +11,10 @@ full: update
 reload-os:
 	nh os switch . -- --impure
 
+# also install some drivers and games/IA related software
+games-os:
+	GAMES=enabled nh os switch . -- --impure
+
 reload-home:
 	nh home switch . -- --impure
 
@@ -18,4 +22,3 @@ update: flake.lock
 
 flake.lock:
 	nix flake update
-
