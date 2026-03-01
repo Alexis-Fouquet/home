@@ -131,6 +131,7 @@ in
       "idea"
       "nvidia-x11"
       "nvidia-settings"
+      "obsidian"
     ];
 
   virtualisation.docker.enable = true;
