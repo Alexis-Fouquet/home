@@ -6,14 +6,15 @@
 
   home.packages = with pkgs; [
     jetbrains.idea
+    zotero
   ];
 
   programs.zen-browser.enable = true;
   programs.sioyek = {
     enable = true;
     bindings = {
-      move_left = "h";
-      move_right = "l";
+      move_left = "H";
+      move_right = "L";
     };
   };
 }
