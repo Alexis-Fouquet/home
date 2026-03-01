@@ -6,7 +6,6 @@
 
   home.packages = with pkgs; [
     jetbrains.idea
-    obsidian
     zotero
   ];
 
