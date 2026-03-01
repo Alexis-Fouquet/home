@@ -11,4 +11,11 @@
     cava
     maven
   ];
+
+  programs.tmux = {
+      enable = true;
+      keyMode = "vi";
+      mouse = true;
+      shell = "${pkgs.zsh}/bin/zsh";
+  };
 }
