@@ -3,11 +3,12 @@
   lib,
   game-mode,
   config,
+  dms,
   ...
 }:
 let
   use_ly = false;
-  use_gdm = true;
+  use_gdm = false;
 in
 {
   # Generated from the installer and edited after
@@ -15,6 +16,7 @@ in
     # Impure - generated per computer - impure even with a symlink
     ./hardware-configuration.nix
     ./gui/flatpak.nix
+    dms.nixosModules.greeter
   ];
 
   # Enable bluetooth
@@ -67,6 +69,12 @@ in
   services.xserver.enable = false;
   programs.xwayland.enable = true;
 
+  services.greetd.enable = true;
+  # From the documentation
+  programs.dank-material-shell.greeter = {
+      enable = true;
+      compositor.name = "niri";
+  };
   services.displayManager.gdm = {
     enable = use_gdm;
     wayland = true;
