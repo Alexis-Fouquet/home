@@ -16,7 +16,8 @@
         # I was just lazy loading it only for markdown...
         enable = true;
         lazyLoad.settings = {
-          ft = ["typst"];
+          # Almost never use it
+          # ft = ["typst"];
         };
       };
       treesitter = {
