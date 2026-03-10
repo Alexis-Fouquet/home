@@ -141,6 +141,8 @@ in
       "nvidia-settings"
       "steam"
       "steam-unwrapped"
+      # I think I removed it like 3 times, but always come back to it
+      "obsidian"
     ];
 
   virtualisation.docker.enable = true;

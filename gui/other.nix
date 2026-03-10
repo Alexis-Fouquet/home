@@ -8,11 +8,12 @@
     pkgs.jetbrains.idea
     # Just to have Zotero 8
     unstable.zotero
+    pkgs.obsidian
   ];
 
   programs.zen-browser.enable = true;
   programs.sioyek = {
-    enable = true;
+    enable = false;
     bindings = {
       move_left = "H";
       move_right = "L";
