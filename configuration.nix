@@ -152,16 +152,26 @@ in
   };
 
   # Games config
-  services.xserver.videoDrivers = lib.mkIf game-mode [ "nvidia" ];
+  services.xserver.videoDrivers = lib.mkIf game-mode [ "modesetting" "nvidia" ];
   hardware.graphics = lib.mkIf game-mode {
     enable = true;
   };
   hardware.nvidia = lib.mkIf game-mode {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # TODO: find a way to avoid hard coding this
+    prime = {
+        nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:2:0";
+
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+    };
   };
   programs.steam = lib.mkIf game-mode {
       enable = true;
@@ -170,4 +180,17 @@ in
       enable = true;
   };
   nixpkgs.config.cudaSupport = lib.mkIf game-mode true;
+
+  # Trying specialisation as in the wiki
+  specialisation = {
+      athome.configuration = {
+          system.nixos.tags = [ "athome" ];
+          hardware.nvidia = {
+              powerManagement.finegrained = lib.mkForce false;
+              prime.offload.enable = lib.mkForce false;
+              prime.offload.enableOffloadCmd = lib.mkForce false;
+              prime.sync.enable = lib.mkForce true;
+          };
+      };
+  };
 }

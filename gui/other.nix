@@ -1,12 +1,13 @@
-{ pkgs, zen-browser, ... }:
+{ pkgs, zen-browser, unstable, ... }:
 {
   imports = [
     zen-browser.homeModules.beta
   ];
 
-  home.packages = with pkgs; [
-    jetbrains.idea
-    zotero
+  home.packages = [
+    pkgs.jetbrains.idea
+    # Just to have Zotero 8
+    unstable.zotero
   ];
 
   programs.zen-browser.enable = true;

@@ -39,7 +39,7 @@
   };
 
   outputs =
-    args@{
+    {
       nixpkgs,
       unstable-pkgs,
       home-manager,
