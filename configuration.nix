@@ -137,6 +137,7 @@ in
     p:
     builtins.elem (lib.getName p) [
       "idea"
+      "clion"
       "nvidia-x11"
       "nvidia-settings"
       "steam"

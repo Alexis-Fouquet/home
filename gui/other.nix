@@ -6,6 +6,7 @@
 
   home.packages = [
     pkgs.jetbrains.idea
+    pkgs.jetbrains.clion
     # Just to have Zotero 8
     unstable.zotero
     pkgs.obsidian
