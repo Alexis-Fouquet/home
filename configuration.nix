@@ -161,17 +161,4 @@
       enable = true;
   };
   nixpkgs.config.cudaSupport = lib.mkIf game-mode true;
-
-  # Trying specialisation as in the wiki
-  specialisation = {
-      athome.configuration = {
-          system.nixos.tags = [ "athome" ];
-          hardware.nvidia = {
-              powerManagement.finegrained = lib.mkForce false;
-              prime.offload.enable = lib.mkForce false;
-              prime.offload.enableOffloadCmd = lib.mkForce false;
-              prime.sync.enable = lib.mkForce true;
-          };
-      };
-  };
 }
