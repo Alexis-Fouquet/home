@@ -12,7 +12,6 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     quickshell = {
       url = "github:quickshell-mirror/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +43,6 @@
       unstable-pkgs,
       home-manager,
       nixvim,
-      nix-flatpak,
       quickshell,
       nix-wallpaper,
       wallpkgs,
@@ -67,7 +65,6 @@
         }:
         {
           nixvim = nixvim;
-          flatpak = nix-flatpak;
           username = username;
           userpath = userpath;
           on-nixos = on-nixos;
@@ -123,7 +120,6 @@
           modules = [
             ./configuration.nix
 
-            nix-flatpak.nixosModules.nix-flatpak
             home-manager.nixosModules.home-manager
             {
               home-manager = {

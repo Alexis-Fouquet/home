@@ -6,16 +6,11 @@
   dms,
   ...
 }:
-let
-  use_ly = false;
-  use_gdm = false;
-in
 {
   # Generated from the installer and edited after
   imports = [
     # Impure - generated per computer - impure even with a symlink
     ./hardware-configuration.nix
-    ./gui/flatpak.nix
     dms.nixosModules.greeter
   ];
 
@@ -62,10 +57,6 @@ in
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  services.displayManager.ly = {
-    enable = use_ly;
-  };
-
   services.xserver.enable = false;
   programs.xwayland.enable = true;
 
@@ -75,14 +66,9 @@ in
       enable = true;
       compositor.name = "niri";
   };
-  services.displayManager.gdm = {
-    enable = use_gdm;
-    wayland = true;
-  };
 
   services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -100,23 +86,15 @@ in
     ];
   };
 
-  programs.firefox.enable = false;
-  programs.hyprland.enable = false;
   programs.niri.enable = true;
-  programs.hyprlock.enable = false;
 
-  # Should restart after editing this
-  systemd.user.services.hypridle = {
-    path = [ pkgs.libnotify ];
-  };
-
-  services.flatpak.enable = false;
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   qt.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
+    gcc
     gnumake
     libnotify
     man-pages
@@ -126,7 +104,7 @@ in
   ];
   environment.pathsToLink = [ "/share/zsh" ];
 
-  system.stateVersion = "25.05"; # Did you read the comment? Yes
+  system.stateVersion = "25.05";
 
   nix.gc = {
     automatic = true;

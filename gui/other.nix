@@ -13,11 +13,4 @@
   ];
 
   programs.zen-browser.enable = true;
-  programs.sioyek = {
-    enable = false;
-    bindings = {
-      move_left = "H";
-      move_right = "L";
-    };
-  };
 }
