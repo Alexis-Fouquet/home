@@ -3,18 +3,15 @@
   lib,
   game-mode,
   config,
+  dms,
   ...
 }:
-let
-  use_ly = false;
-  use_gdm = true;
-in
 {
   # Generated from the installer and edited after
   imports = [
     # Impure - generated per computer - impure even with a symlink
     ./hardware-configuration.nix
-    ./gui/flatpak.nix
+    dms.nixosModules.greeter
   ];
 
   # Enable bluetooth
@@ -60,21 +57,18 @@ in
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  services.displayManager.ly = {
-    enable = use_ly;
-  };
-
   services.xserver.enable = false;
   programs.xwayland.enable = true;
 
-  services.displayManager.gdm = {
-    enable = use_gdm;
-    wayland = true;
+  services.greetd.enable = true;
+  # From the documentation
+  programs.dank-material-shell.greeter = {
+      enable = true;
+      compositor.name = "niri";
   };
 
   services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -92,23 +86,15 @@ in
     ];
   };
 
-  programs.firefox.enable = false;
-  programs.hyprland.enable = false;
   programs.niri.enable = true;
-  programs.hyprlock.enable = false;
 
-  # Should restart after editing this
-  systemd.user.services.hypridle = {
-    path = [ pkgs.libnotify ];
-  };
-
-  services.flatpak.enable = false;
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
   qt.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
+    gcc
     gnumake
     libnotify
     man-pages
@@ -118,7 +104,7 @@ in
   ];
   environment.pathsToLink = [ "/share/zsh" ];
 
-  system.stateVersion = "25.05"; # Did you read the comment? Yes
+  system.stateVersion = "25.05";
 
   nix.gc = {
     automatic = true;
@@ -129,10 +115,13 @@ in
     p:
     builtins.elem (lib.getName p) [
       "idea"
+      "clion"
       "nvidia-x11"
       "nvidia-settings"
       "steam"
       "steam-unwrapped"
+      # I think I removed it like 3 times, but always come back to it
+      "obsidian"
     ];
 
   virtualisation.docker.enable = true;
@@ -144,16 +133,26 @@ in
   };
 
   # Games config
-  services.xserver.videoDrivers = lib.mkIf game-mode [ "nvidia" ];
+  services.xserver.videoDrivers = lib.mkIf game-mode [ "modesetting" "nvidia" ];
   hardware.graphics = lib.mkIf game-mode {
     enable = true;
   };
   hardware.nvidia = lib.mkIf game-mode {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # TODO: find a way to avoid hard coding this
+    prime = {
+        nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:2:0";
+
+        offload.enable = true;
+        offload.enableOffloadCmd = true;
+    };
   };
   programs.steam = lib.mkIf game-mode {
       enable = true;

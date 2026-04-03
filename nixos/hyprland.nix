@@ -5,6 +5,7 @@
   ...
 }:
 let
+  enable = false;
   mod = "SUPER";
   alt = "SHIFT";
   alt2 = "CTRL";
@@ -17,11 +18,12 @@ let
 in
 {
   home.packages = with pkgs; [
-    nautilus
-    hyprpicker
+    xfce.thunar
     blueman
-    hyprshot
     bluetui
+  ] ++ lib.optionals enable [
+    hyprpicker
+    hyprshot
   ];
 
   wayland.windowManager.hyprland = {
