@@ -5,11 +5,16 @@
   on-nixos,
   at-epita,
   debug,
+  pkgs,
   ...
 }:
 {
   imports = [
     nixvim.homeModules.nixvim
+  ];
+
+  home.packages = [
+    pkgs.wakatime-cli
   ];
 
   programs.ripgrep.enable = true;
@@ -358,7 +363,7 @@
       }
     ]
     ++
-      builtins.map
+      map
         (str: {
           action = "<nop>";
           key = str;
