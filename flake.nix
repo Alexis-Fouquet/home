@@ -31,7 +31,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    nix-wallpaper.url = "github:lunik1/nix-wallpaper";
     wallpkgs.url = "github:NotAShelf/wallpkgs";
 
     unstable-pkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -44,7 +43,6 @@
       home-manager,
       nixvim,
       quickshell,
-      nix-wallpaper,
       wallpkgs,
       zen-browser,
       dms,
@@ -69,7 +67,6 @@
           userpath = userpath;
           on-nixos = on-nixos;
           qs-pkg = quickshell.packages.${system}.default;
-          nix-wallpaper = nix-wallpaper.packages.${system}.default;
           qs = true;
           debug = false;
           at-epita = at-epita;

@@ -4,19 +4,12 @@
   grammar,
   ...
 }:
-let
-  diagrams = false && !at-epita;
-in
 {
   home.packages =
     with pkgs;
     [
       # For image.nvim
       luajitPackages.magick
-    ]
-    ++ lib.optionals diagrams [
-      mermaid-cli
-      plantuml
     ];
 
   programs.nixvim = {
@@ -52,9 +45,6 @@ in
       image = {
         enable = true;
         lazyLoad.settings.event = "DeferredUIEnter";
-      };
-      diagram = {
-        enable = diagrams;
       };
 
       treesitter = {

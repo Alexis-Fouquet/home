@@ -2,8 +2,6 @@
 {
   imports = [
     ./hyprland.nix
-    ./waybar.nix
-    ./hypridle.nix
     ./home.nix
     ./wallpapers.nix
   ];
