@@ -1,15 +1,19 @@
 {
   nixvim,
-  lib,
   grammar,
   on-nixos,
   at-epita,
   debug,
+  pkgs,
   ...
 }:
 {
   imports = [
     nixvim.homeModules.nixvim
+  ];
+
+  home.packages = [
+    pkgs.wakatime-cli
   ];
 
   programs.ripgrep.enable = true;
@@ -55,7 +59,7 @@
       vimtex.enable = !at-epita;
 
       nvim-snippets = {
-        enable = true;
+        enable = false;
         settings = {
           friendly_snippets = false;
           create_cmp_source = true;
@@ -92,121 +96,31 @@
       no-neck-pain.enable = true;
       csvview.enable = true;
 
-      cmp = {
+      blink-cmp = {
         enable = true;
-        autoEnableSources = true;
         settings = {
-          sources = [
-            { name = "nvim_lsp"; }
-            { name = "path"; }
-            { name = "buffer"; }
-            { name = "calc"; }
-            { name = "snippets"; }
-            # Commented to avoid auto install
-            # { name = "luasnip"; }
-          ];
-
-          mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<S-Tab>" = /* lua */ ''
-              cmp.mapping(function (fallback)
-                  if cmp.visible() then
-                      cmp.select_next_item({
-                          behavior = cmp.SelectBehavior.Select
-                      })
-                  else
-                      fallback()
-                  end
-              end, {'i', 's', 'c'})
-            '';
-            "<C-e>" = "cmp.mapping.abort()";
-            "<Tab>" = /* lua */ ''
-              cmp.mapping(function(fallback)
-                  -- From the wiki
-                  if cmp.visible() then
-                      local entry = cmp.get_selected_entry()
-                      if not entry then
-                          cmp.select_next_item({
-                              behavior = cmp.SelectBehavior.Select
-                          })
-                      end
-                      cmp.confirm()
-                  else
-                      fallback()
-                  end
-              end, {'i','s','c',})
-            '';
-          };
-
-          window = {
-            __raw = /* lua */ ''
-              {
-                  completion = cmp.config.window.bordered(),
-                  documentation = cmp.config.window.bordered(),
-              }
-            '';
-            completion = {
-              __raw = nixvim.lib.nixvim.mkRaw "cmp.config.window.bordered()";
+          # Inspired from documentation example
+          completion = {
+            accept = {
+              auto_brackets = {
+                enabled = true;
+                semantic_token_resolution = {
+                  enabled = false;
+                };
+              };
             };
-            documentation.border = [
-              "/"
-              "-"
-              "\\"
-              "|"
-            ];
+            documentation = {
+              auto_show = true;
+            };
+            ghost_text.enabled = true;
           };
-
-          snippet.expand = /* lua */ ''
-            function(args)
-                vim.snippet.expand(args.body)
-            end
-          '';
-
-          formatting = {
-            fields = [
-              "kind"
-              "abbr"
-              "menu"
-            ];
-            format = lib.mkForce /* lua */ ''
-              function(entry, vim_item)
-                  local kind = require("lspkind")
-                      .cmp_format({
-                          mode = "symbol_text",
-                          maxwidth = 60,
-                      })(entry, vim_item)
-                  local strings = vim.split(
-                      kind.kind,
-                      "%s",
-                      { trimempty = true }
-                  )
-                  kind.kind = " " .. (strings[1] or "") .. " "
-                  kind.menu = "    (" .. (strings[2] or "") .. ")"
-
-                  return kind
-              end
-            '';
+          keymap = {
+            preset = "super-tab";
           };
-
-        };
-        cmdline = {
-          "/" = {
-            sources = [
-              { name = "buffer"; }
-            ];
-          };
-          ":" = {
-            sources = [
-              { name = "path"; }
-              { name = "cmdline"; }
-            ];
+          signature = {
+            enabled = true;
           };
         };
-
-        # Was not a good idea to lazy load
-      };
-      lspkind = {
-        enable = true;
       };
     };
 
@@ -337,6 +251,7 @@
       combinePlugins.enable = true;
       combinePlugins.standalonePlugins = [
         "friendly-snippets"
+        "blink.cmp"
       ];
     };
 
@@ -361,7 +276,7 @@
       }
     ]
     ++
-      builtins.map
+      map
         (str: {
           action = "<nop>";
           key = str;

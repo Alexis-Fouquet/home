@@ -3,13 +3,13 @@
   description = "Home Manager and NixOS configuration of Alexis Fouquet";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
@@ -31,7 +31,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    nix-wallpaper.url = "github:lunik1/nix-wallpaper";
     wallpkgs.url = "github:NotAShelf/wallpkgs";
 
     unstable-pkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -44,7 +43,6 @@
       home-manager,
       nixvim,
       quickshell,
-      nix-wallpaper,
       wallpkgs,
       zen-browser,
       dms,
@@ -69,7 +67,6 @@
           userpath = userpath;
           on-nixos = on-nixos;
           qs-pkg = quickshell.packages.${system}.default;
-          nix-wallpaper = nix-wallpaper.packages.${system}.default;
           qs = on-nixos;
           debug = false;
           at-epita = at-epita;

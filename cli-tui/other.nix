@@ -6,10 +6,8 @@
     nix-search-tv
     asciinema
     rlwrap
-    lf
     matugen
     cava
-    maven
   ];
 
   programs.tmux = {
