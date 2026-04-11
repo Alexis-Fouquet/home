@@ -28,7 +28,6 @@
     plugins = {
       lz-n.enable = true;
 
-      parinfer-rust.enable = true;
       which-key = {
         enable = true;
         lazyLoad.settings.event = "DeferredUIEnter";
