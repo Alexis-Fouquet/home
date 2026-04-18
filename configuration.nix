@@ -63,8 +63,8 @@
   services.greetd.enable = true;
   # From the documentation
   programs.dank-material-shell.greeter = {
-      enable = true;
-      compositor.name = "niri";
+    enable = true;
+    compositor.name = "niri";
   };
 
   services.printing.enable = true;
@@ -124,7 +124,13 @@
       "obsidian"
     ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   documentation = {
     enable = true;
@@ -133,7 +139,10 @@
   };
 
   # Games config
-  services.xserver.videoDrivers = lib.mkIf game-mode [ "modesetting" "nvidia" ];
+  services.xserver.videoDrivers = lib.mkIf game-mode [
+    "modesetting"
+    "nvidia"
+  ];
   hardware.graphics = lib.mkIf game-mode {
     enable = true;
   };
@@ -147,18 +156,18 @@
 
     # TODO: find a way to avoid hard coding this
     prime = {
-        nvidiaBusId = "PCI:1:0:0";
-        intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
 
-        offload.enable = true;
-        offload.enableOffloadCmd = true;
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
     };
   };
   programs.steam = lib.mkIf game-mode {
-      enable = true;
+    enable = true;
   };
   programs.gamemode = lib.mkIf game-mode {
-      enable = true;
+    enable = true;
   };
   nixpkgs.config.cudaSupport = lib.mkIf game-mode true;
 }
