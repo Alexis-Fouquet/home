@@ -31,9 +31,11 @@
         home-manager.follows = "home-manager";
       };
     };
-    wallpkgs.url = "github:NotAShelf/wallpkgs";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     unstable-pkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    wallpkgs.url = "github:NotAShelf/wallpkgs";
   };
 
   outputs =
@@ -47,6 +49,7 @@
       zen-browser,
       dms,
       dgop,
+      nix-index-database,
       ...
     }:
     let
@@ -78,6 +81,7 @@
           dgop = dgop;
           zen-browser = zen-browser;
           game-mode = game-mode;
+          nix-index-database = nix-index-database;
         };
       home =
         {
