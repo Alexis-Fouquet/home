@@ -61,6 +61,20 @@
   programs.xwayland.enable = true;
 
   services.greetd.enable = true;
+  services.paperless = {
+    enable = true;
+    # consumptionDir = "/home/alexisf/Downloads";
+    settings = {
+      PAPERLESS_CONSUMER_IGNORE_PATTERN = [
+        "*.csv"
+        "*.ipynb"
+        "*.py"
+        "*.html"
+        "*.xpi"
+      ];
+      PAPERLESS_CONSUMER_DELETE_DUPLICATES = true;
+    };
+  };
   # From the documentation
   programs.dank-material-shell.greeter = {
     enable = true;
@@ -116,12 +130,22 @@
     builtins.elem (lib.getName p) [
       "idea"
       "clion"
+      # I think I removed it like 3 times, but always come back to it
+      "obsidian"
+
+      # Games
       "nvidia-x11"
       "nvidia-settings"
       "steam"
       "steam-unwrapped"
-      # I think I removed it like 3 times, but always come back to it
-      "obsidian"
+
+      # CUDA compiling
+      "cuda_cudart"
+      "cuda_nvcc"
+      "cuda_cccl"
+      "libnpp"
+      "libcublas"
+      "libcufft"
     ];
 
   virtualisation.docker = {
