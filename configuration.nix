@@ -75,6 +75,16 @@
       PAPERLESS_CONSUMER_DELETE_DUPLICATES = true;
     };
   };
+  fileSystems."/home/alexisf/paperless" = {
+    fsType = "none";
+    device = "/var/lib/paperless/media/documents/archive";
+    options = [
+      "bind"
+      "ro"
+      "nofail"
+    ];
+  };
+
   # From the documentation
   programs.dank-material-shell.greeter = {
     enable = true;
@@ -97,6 +107,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "paperless"
     ];
   };
 
