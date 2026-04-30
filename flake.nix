@@ -4,24 +4,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable-pkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dgop = {
-      url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -44,18 +33,17 @@
       unstable-pkgs,
       home-manager,
       nixvim,
-      quickshell,
       wallpkgs,
       zen-browser,
-      dms,
-      dgop,
       nix-index-database,
+      stable-pkgs,
       ...
     }:
     let
       system = builtins.currentSystem;
       pkgs = nixpkgs.legacyPackages.${system};
       unstable = unstable-pkgs.legacyPackages.${system};
+      stable = stable-pkgs.legacyPackages.${system};
       extra =
         {
           username,
@@ -69,7 +57,6 @@
           username = username;
           userpath = userpath;
           on-nixos = on-nixos;
-          qs-pkg = quickshell.packages.${system}.default;
           qs = on-nixos;
           debug = false;
           at-epita = at-epita;
@@ -77,11 +64,10 @@
           unstable = unstable;
           wallpkgs = wallpkgs;
           grammar = pkgs.vimPlugins.nvim-treesitter.builtGrammars;
-          dms = dms;
-          dgop = dgop;
           zen-browser = zen-browser;
           game-mode = game-mode;
           nix-index-database = nix-index-database;
+          stable = stable;
         };
       home =
         {

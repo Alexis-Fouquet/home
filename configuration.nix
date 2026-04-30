@@ -3,7 +3,7 @@
   lib,
   game-mode,
   config,
-  dms,
+  stable,
   ...
 }:
 {
@@ -11,7 +11,6 @@
   imports = [
     # Impure - generated per computer - impure even with a symlink
     ./hardware-configuration.nix
-    dms.nixosModules.greeter
   ];
 
   # Enable bluetooth
@@ -61,8 +60,18 @@
   programs.xwayland.enable = true;
 
   services.greetd.enable = true;
+  programs.dms-shell = {
+      enable = true;
+      systemd.enable = true;
+      enableSystemMonitoring = true;
+      enableDynamicTheming = true;
+      enableAudioWavelength = true;
+  };
+
   services.paperless = {
     enable = true;
+    # OpenCV takes 1h to compile, keep stable instead
+    package = stable.paperless-ngx;
     # consumptionDir = "/home/alexisf/Downloads";
     settings = {
       PAPERLESS_CONSUMER_IGNORE_PATTERN = [
@@ -86,7 +95,7 @@
   };
 
   # From the documentation
-  programs.dank-material-shell.greeter = {
+  services.displayManager.dms-greeter = {
     enable = true;
     compositor.name = "niri";
   };
@@ -126,6 +135,7 @@
     man-pages-posix
     nixfmt-rfc-style
     xwayland-satellite
+    dgop
   ];
   environment.pathsToLink = [ "/share/zsh" ];
 
