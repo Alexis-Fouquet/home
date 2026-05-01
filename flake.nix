@@ -44,6 +44,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       unstable = unstable-pkgs.legacyPackages.${system};
       stable = stable-pkgs.legacyPackages.${system};
+      global-game-mode = builtins.getEnv "GAMES" == "enabled";
       extra =
         {
           username,
@@ -94,11 +95,11 @@
       nixosConfigurations.nixos =
         let
           ext = extra {
-            username = "alexisf";
-            userpath = "/home/alexisf";
+            username = throw "No username on nixos";
+            userpath = throw "No userpath on nixos";
             on-nixos = true;
             at-epita = false;
-            game-mode = builtins.getEnv "GAMES" == "enabled";
+            game-mode = global-game-mode;
           };
         in
         nixpkgs.lib.nixosSystem {
@@ -114,6 +115,7 @@
                 useUserPackages = true;
                 extraSpecialArgs = ext;
                 users.alexisf = import ./index.nix;
+                users.games = import ./index.nix;
               };
             }
           ];

@@ -61,11 +61,11 @@
 
   services.greetd.enable = true;
   programs.dms-shell = {
-      enable = true;
-      systemd.enable = true;
-      enableSystemMonitoring = true;
-      enableDynamicTheming = true;
-      enableAudioWavelength = true;
+    enable = true;
+    systemd.enable = true;
+    enableSystemMonitoring = true;
+    enableDynamicTheming = true;
+    enableAudioWavelength = true;
   };
 
   services.paperless = {
@@ -110,14 +110,23 @@
     pulse.enable = true;
   };
 
-  users.users.alexisf = {
-    isNormalUser = true;
-    description = "Alexis Fouquet";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "paperless"
-    ];
+  users.users = {
+    alexisf = {
+      isNormalUser = true;
+      description = "Alexis Fouquet";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "paperless"
+      ];
+    };
+    games = {
+      isNormalUser = true;
+      description = "User for games and anything not related to work";
+      extraGroups = [
+        "networkmanager"
+      ];
+    };
   };
 
   programs.niri.enable = true;

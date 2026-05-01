@@ -1,7 +1,6 @@
 {
   lib,
   on-nixos,
-  at-epita,
   ...
 }:
 {
@@ -10,8 +9,7 @@
     ./git.nix
     ./kitty.nix
   ]
-  ++ lib.optionals on-nixos [
-  ]
-  ++ lib.optionals at-epita [
+  ++ lib.optionals (!on-nixos) [
+    ./portable.nix
   ];
 }

@@ -1,13 +1,8 @@
 {
   pkgs,
-  username,
-  userpath,
   ...
 }:
 {
-  # This configuration should be portable
-  home.username = username;
-  home.homeDirectory = userpath;
   # Should not change
   home.stateVersion = "24.11";
 
