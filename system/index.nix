@@ -6,8 +6,10 @@
 {
   imports = [
     ./home-manager.nix
-    ./git.nix
     ./kitty.nix
+  ]
+  ++ lib.optionals on-nixos [
+    ./git.nix
   ]
   ++ lib.optionals (!on-nixos) [
     ./portable.nix

@@ -1,4 +1,9 @@
-{ ... }:
+{ config, ... }:
+let
+  isMainUser = config.home.username == "alexisf";
+  name = if isMainUser then "Alexis Fouquet" else "Alexis";
+  email = if isMainUser then "144385093+Alexis-Fouquet@users.noreply.github.com" else "";
+in
 {
   programs.git = {
     enable = true;
@@ -8,8 +13,8 @@
         adog = "log --all --decorate --oneline --graph";
       };
       # Public email for github
-      user.email = "144385093+Alexis-Fouquet@users.noreply.github.com";
-      user.name = "Alexis Fouquet";
+      user.email = email;
+      user.name = name;
       core.editor = "nvim";
     };
     lfs.enable = true;

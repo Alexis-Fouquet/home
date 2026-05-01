@@ -72,7 +72,6 @@
     enable = true;
     # OpenCV takes 1h to compile, keep stable instead
     package = stable.paperless-ngx;
-    # consumptionDir = "/home/alexisf/Downloads";
     settings = {
       PAPERLESS_CONSUMER_IGNORE_PATTERN = [
         "*.csv"
