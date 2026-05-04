@@ -1,4 +1,7 @@
-{ lib, ... }:
+{ on-nixos, lib, config, ... }:
+let
+  username = if on-nixos then config.home.username else "EMPTY";
+in
 {
   programs.zsh = {
     enable = true;
@@ -28,6 +31,7 @@
         "zsh-users/zsh-autosuggestions"
         "zsh-users/zsh-syntax-highlighting kind:defer"
         "MichaelAquilina/zsh-you-should-use"
+        "# Change hash for /tmp using username: ${username}"
       ];
     };
     initContent = lib.mkMerge [
