@@ -167,6 +167,7 @@
       "nvidia-settings"
       "steam"
       "steam-unwrapped"
+      "nvidia-kernel-modules"
 
       # CUDA compiling
       "cuda_cudart"
