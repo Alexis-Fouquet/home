@@ -84,6 +84,7 @@
           c
           sql
           haskell
+          r
         ];
 
         settings = {
