@@ -8,6 +8,7 @@
     rlwrap
     matugen
     cava
+    hledger
   ];
 
   programs = {
