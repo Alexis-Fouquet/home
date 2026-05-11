@@ -189,6 +189,7 @@
 
         asm_lsp.enable = true;
         eslint.enable = true;
+        ts_ls.enable = true;
       };
 
       # Some of them are directly from the documentation
