@@ -27,7 +27,6 @@ in
         "ohmyzsh/ohmyzsh path:lib"
         "ohmyzsh/ohmyzsh path:plugins/git"
         "ohmyzsh/ohmyzsh path:plugins/colored-man-pages"
-        "ohmyzsh/ohmyzsh path:plugins/sudo"
         "zsh-users/zsh-autosuggestions"
         "zsh-users/zsh-syntax-highlighting kind:defer"
         "MichaelAquilina/zsh-you-should-use"

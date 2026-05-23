@@ -51,19 +51,10 @@
 
       fugitive = {
         enable = true;
-        # LazyLoad not yet implemented for this plugin
       };
       gitsigns.enable = true;
 
-      vimtex.enable = !at-epita;
-
-      nvim-snippets = {
-        enable = false;
-        settings = {
-          friendly_snippets = false;
-          create_cmp_source = true;
-        };
-      };
+      vimtex.enable = false;
 
       nvim-autopairs = {
         enable = true;
@@ -80,11 +71,8 @@
           latex
           python
           java
-          qmljs
           c
           sql
-          haskell
-          r
           javascript
         ];
 
@@ -169,14 +157,6 @@
         };
         clangd.enable = true;
         rust_analyzer.enable = true;
-        texlab.enable = true;
-        qmlls = {
-          enable = true;
-          config.cmd = [
-            "qmlls"
-            "-E"
-          ];
-        };
 
         # Testing python
         ruff.enable = false;
@@ -187,7 +167,6 @@
 
         jdtls.enable = true;
 
-        asm_lsp.enable = true;
         eslint.enable = true;
         ts_ls.enable = true;
       };

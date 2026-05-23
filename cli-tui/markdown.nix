@@ -21,26 +21,6 @@
           ft = "md";
         };
       };
-      vimwiki = {
-        # Breaks everything by changing the filetype
-        enable = false;
-        settings = {
-          filetypes = [ "markdown" ];
-        };
-        # LazyLoad not yet implemented for this plugin
-      };
-      render-markdown = {
-        enable = false;
-        lazyLoad.settings = {
-          ft = "markdown";
-        };
-      };
-      markview = {
-        enable = true;
-        lazyLoad.settings = {
-          ft = ["markdown"];
-        };
-      };
 
       image = {
         enable = true;
