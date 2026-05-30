@@ -26,6 +26,7 @@
     };
 
     plugins = {
+      colorizer.enable = true;
       lz-n.enable = true;
 
       which-key = {
@@ -169,6 +170,7 @@
 
         eslint.enable = true;
         ts_ls.enable = true;
+        html.enable = true;
       };
 
       # Some of them are directly from the documentation
