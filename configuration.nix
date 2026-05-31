@@ -141,7 +141,7 @@
     libnotify
     man-pages
     man-pages-posix
-    nixfmt-rfc-style
+    nixfmt
     xwayland-satellite
     dgop
   ];

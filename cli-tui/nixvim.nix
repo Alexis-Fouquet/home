@@ -5,6 +5,7 @@
   at-epita,
   debug,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -20,6 +21,7 @@
 
   programs.nixvim = {
     enable = true;
+    nixpkgs.source = inputs.nixpkgs;
 
     colorschemes.tokyonight = {
       enable = true;

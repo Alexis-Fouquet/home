@@ -4,7 +4,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable-pkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    stable-pkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +28,7 @@
   };
 
   outputs =
-    {
+    inputs @ {
       nixpkgs,
       unstable-pkgs,
       home-manager,
@@ -69,6 +69,7 @@
           game-mode = game-mode;
           nix-index-database = nix-index-database;
           stable = stable;
+          inputs = inputs;
         };
       home =
         {

@@ -18,7 +18,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    xfce.thunar
+    thunar
     blueman
     bluetui
   ] ++ lib.optionals enable [
