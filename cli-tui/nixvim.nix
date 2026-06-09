@@ -77,6 +77,7 @@
           c
           sql
           javascript
+          ocaml
         ];
 
         settings = {
@@ -173,6 +174,7 @@
         eslint.enable = true;
         ts_ls.enable = true;
         html.enable = true;
+        ocamllsp.enable = true;
       };
 
       # Some of them are directly from the documentation
