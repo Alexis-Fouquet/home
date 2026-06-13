@@ -30,6 +30,8 @@
       background = "#000000";
 
       shell = "zsh";
+
+      auto_reload_config = -1;
     };
   };
 }
