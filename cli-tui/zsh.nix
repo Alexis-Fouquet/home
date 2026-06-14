@@ -10,6 +10,9 @@ in
     shellAliases = {
       vim = "nvim";
       ":q" = "exit";
+      ":w" = "git commit -a";
+      "?" = "git status";
+      "/" = "vim $(fzf)";
       cat = "bat";
       icat = "kitten icat";
       dev = "nix develop -c zsh";
