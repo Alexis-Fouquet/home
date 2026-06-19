@@ -3,6 +3,11 @@ let
   username = if on-nixos then config.home.username else "EMPTY";
 in
 {
+  programs.starship = {
+      enable = false;
+      enableZshIntegration = true;
+  };
+
   programs.zsh = {
     enable = true;
     autocd = true;
