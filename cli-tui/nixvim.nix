@@ -78,6 +78,7 @@
           sql
           javascript
           ocaml
+          typespec
         ];
 
         settings = {
@@ -175,6 +176,8 @@
         ts_ls.enable = true;
         html.enable = true;
         ocamllsp.enable = true;
+
+        spectral.enable = true;
       };
 
       # Some of them are directly from the documentation
