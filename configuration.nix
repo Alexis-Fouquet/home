@@ -59,7 +59,6 @@
   services.xserver.enable = false;
   programs.xwayland.enable = true;
 
-  services.greetd.enable = true;
   programs.dms-shell = {
     enable = true;
     systemd.enable = true;
@@ -94,6 +93,7 @@
   };
 
   # From the documentation
+  services.greetd.enable = true;
   services.displayManager.dms-greeter = {
     enable = true;
     compositor.name = "niri";
