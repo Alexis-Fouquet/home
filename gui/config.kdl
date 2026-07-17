@@ -79,7 +79,7 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application" {
-        spawn "rofi" "-show" "drun" "-show-icons";
+        spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
     Mod+Shift+Y hotkey-overlay-title="Lock the Screen" {
         spawn "dms" "ipc" "call" "lock" "lock";
