@@ -144,6 +144,7 @@
     nixfmt
     xwayland-satellite
     dgop
+    xdg-terminal-exec
   ];
   environment.pathsToLink = [ "/share/zsh" ];
 
