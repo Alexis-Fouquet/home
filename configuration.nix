@@ -4,6 +4,7 @@
   game-mode,
   config,
   stable,
+  dms-plugin-registry,
   ...
 }:
 {
@@ -11,6 +12,7 @@
   imports = [
     # Impure - generated per computer - impure even with a symlink
     ./hardware-configuration.nix
+    dms-plugin-registry.nixosModules.default
   ];
 
   # Enable bluetooth
@@ -65,6 +67,14 @@
     enableSystemMonitoring = true;
     enableDynamicTheming = true;
     enableAudioWavelength = true;
+    enableCalendarEvents = true;
+
+    plugins = {
+        dockerManager.enable = true;
+        dankPomodoroTimer.enable = true;
+        dankBatteryAlerts.enable = true;
+        wallpaperCarousel.enable = true;
+    };
   };
 
   services.paperless = {

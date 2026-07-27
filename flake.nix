@@ -25,6 +25,11 @@
 
     unstable-pkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     wallpkgs.url = "github:NotAShelf/wallpkgs";
+
+    dms-plugin-registry = {
+        url = "github:AvengeMedia/dms-plugin-registry";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,6 +42,7 @@
       zen-browser,
       nix-index-database,
       stable-pkgs,
+      dms-plugin-registry,
       ...
     }:
     let
@@ -70,6 +76,7 @@
           nix-index-database = nix-index-database;
           stable = stable;
           inputs = inputs;
+          dms-plugin-registry = dms-plugin-registry;
         };
       home =
         {

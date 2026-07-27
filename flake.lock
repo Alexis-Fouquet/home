@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "dms-plugin-registry": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785116921,
+        "narHash": "sha256-yokvpzBBL2so40sNYh+bjUSazcvf4IvHx/LaSxMc7xA=",
+        "owner": "AvengeMedia",
+        "repo": "dms-plugin-registry",
+        "rev": "06a7c71e99de6293dc6361d0be1ed558aa7e7392",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AvengeMedia",
+        "repo": "dms-plugin-registry",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -101,6 +121,7 @@
     },
     "root": {
       "inputs": {
+        "dms-plugin-registry": "dms-plugin-registry",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
