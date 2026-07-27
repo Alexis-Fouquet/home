@@ -1,6 +1,6 @@
 {
   pkgs,
-  at-epita,
+  # at-epita,
   grammar,
   ...
 }:
@@ -15,15 +15,14 @@
   programs.nixvim = {
     plugins = {
       obsidian = {
-        enable = !at-epita;
-        # TODO: detect repository
+        enable = false;
         lazyLoad.settings = {
           ft = "md";
         };
       };
 
       image = {
-        enable = true;
+        enable = false;
         lazyLoad.settings.event = "DeferredUIEnter";
       };
 

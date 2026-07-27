@@ -1,6 +1,6 @@
-{ ... }:
+{ at-epita,  ... }:
 {
   programs.rofi = {
-    enable = true;
+    enable = at-epita;
   };
 }

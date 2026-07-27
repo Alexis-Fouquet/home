@@ -88,7 +88,7 @@
 
       lspconfig.enable = true;
       no-neck-pain.enable = true;
-      csvview.enable = true;
+      csvview.enable = false;
 
       blink-cmp = {
         enable = true;
@@ -160,24 +160,20 @@
             command = "nixfmt --width 80";
           };
         };
-        clangd.enable = true;
+        clangd.enable = false;
         rust_analyzer.enable = true;
 
         # Testing python
-        ruff.enable = false;
-        pylsp.enable = false;
-        # With a z this is better
-        pylyzer.enable = false;
-        pyright.enable = true;
+        pyright.enable = false;
 
-        jdtls.enable = true;
+        jdtls.enable = false;
 
-        eslint.enable = true;
-        ts_ls.enable = true;
-        html.enable = true;
-        ocamllsp.enable = true;
+        eslint.enable = false;
+        ts_ls.enable = false;
+        html.enable = false;
+        ocamllsp.enable = false;
 
-        spectral.enable = true;
+        spectral.enable = false;
       };
 
       # Some of them are directly from the documentation
