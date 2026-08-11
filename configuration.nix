@@ -78,9 +78,9 @@
   };
 
   services.paperless = {
-    enable = true;
+    enable = false;
     # OpenCV takes 1h to compile, keep stable instead
-    package = stable.paperless-ngx;
+    # package = stable.paperless-ngx;
     settings = {
       PAPERLESS_CONSUMER_IGNORE_PATTERN = [
         "*.csv"
@@ -187,6 +187,25 @@
       "libnpp"
       "libcublas"
       "libcufft"
+      "cuda_cupti"
+      "cuda_nvml_dev"
+      "cuda_nvrtc"
+      "cuda_nvtx"
+      "libcufile"
+      "libcurand"
+      "libcusolver"
+      "libnvjitlink"
+      "libcusparse"
+      "libcusparse_lt"
+      "cudnn"
+      "cuda_profiler_api"
+      "cuda_cuobjdump"
+      "cuda_nvdisasm"
+      "cuda-merged"
+      "cuda_gdb"
+      "cuda_nvprune"
+      "cuda_cuxxfilt"
+      "cuda_sanitizer_api"
     ];
 
   virtualisation.docker = {
