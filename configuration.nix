@@ -3,7 +3,6 @@
   lib,
   game-mode,
   config,
-  stable,
   dms-plugin-registry,
   ...
 }:
@@ -253,6 +252,9 @@
       offload.enable = true;
       offload.enableOffloadCmd = true;
     };
+  };
+  programs.gamescope = lib.mkIf game-mode {
+    enable = true;
   };
   programs.steam = lib.mkIf game-mode {
     enable = true;

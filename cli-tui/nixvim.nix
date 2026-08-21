@@ -261,6 +261,10 @@
         action = ":!clang-format -i %";
         key = "<leader>c";
       }
+      {
+        action = ":Git status";
+        key = "gst";
+      }
     ]
     ++
       map

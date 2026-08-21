@@ -1,5 +1,5 @@
 {
-    # pkgs,
+    pkgs,
     zen-browser,
     unstable,
     ... }:
@@ -11,7 +11,7 @@
   home.packages = [
     # Just to have Zotero 8
     unstable.zotero
-    # pkgs.obsidian
+    pkgs.obsidian
   ];
 
   programs.zen-browser.enable = true;
