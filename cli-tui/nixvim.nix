@@ -164,7 +164,7 @@
         rust_analyzer.enable = true;
 
         # Testing python
-        pyright.enable = false;
+        pyright.enable = true;
 
         jdtls.enable = false;
 
