@@ -64,7 +64,6 @@
   programs.dms-shell = {
     enable = true;
     systemd.enable = true;
-    enableSystemMonitoring = true;
     enableDynamicTheming = true;
     enableAudioWavelength = true;
     enableCalendarEvents = true;
@@ -72,7 +71,8 @@
     plugins = {
         dockerManager.enable = true;
         dankPomodoroTimer.enable = true;
-        dankBatteryAlerts.enable = true;
+        # TODO: enable when fixed
+        dankBatteryAlerts.enable = false;
         wallpaperCarousel.enable = true;
     };
   };
