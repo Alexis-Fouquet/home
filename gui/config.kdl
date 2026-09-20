@@ -161,6 +161,7 @@ binds {
     Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
 
     Mod+W { toggle-column-tabbed-display; }
+    Mod+Shift+W { spawn "dms" "ipc" "wallpaperCarousel" "toggle"; }
 
     Mod+S { screenshot; }
     Mod+Ctrl+S { screenshot-screen; }
