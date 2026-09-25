@@ -64,9 +64,6 @@
   programs.dms-shell = {
     enable = true;
     systemd.enable = true;
-    enableDynamicTheming = true;
-    enableAudioWavelength = true;
-    enableCalendarEvents = true;
 
     plugins = {
         dockerManager.enable = true;
