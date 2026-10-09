@@ -17,14 +17,17 @@ let
   cpath = "~/.config/home-manager/gui/qs-config";
 in
 {
-  home.packages = with pkgs; [
-    thunar
-    blueman
-    bluetui
-  ] ++ lib.optionals enable [
-    hyprpicker
-    hyprshot
-  ];
+  home.packages =
+    with pkgs;
+    [
+      thunar
+      blueman
+      bluetui
+    ]
+    ++ lib.optionals enable [
+      hyprpicker
+      hyprshot
+    ];
 
   wayland.windowManager.hyprland = {
     enable = false;
@@ -45,14 +48,12 @@ in
       "${mod}, RETURN, exec, ${terminal}"
       "${mod} ${alt}, L, exec, dms ipc call lock lock"
 
-      /* Windows */
-      "${mod}, Q, killactive,"
+      /* Windows */ "${mod}, Q, killactive,"
       "${mod} ${alt}, Q, killactive,"
       "${mod}, SPACE, togglefloating,"
       "${mod}, F, fullscreen,"
 
-      /* Workspaces */
-      "${mod}, Z, workspace, previous_per_monitor"
+      /* Workspaces */ "${mod}, Z, workspace, previous_per_monitor"
       "${mod}, TAB, workspace, m+1"
       "${mod} ${alt}, TAB, workspace, m-1"
       "${mod} ${alt2}, TAB, workspace, emptynm"

@@ -1,8 +1,8 @@
 {
-    pkgs,
-    zen-browser,
-    unstable,
-    ... }:
+  pkgs,
+  zen-browser,
+  ...
+}:
 {
   imports = [
     zen-browser.homeModules.beta
@@ -10,7 +10,7 @@
 
   home.packages = [
     # Just to have Zotero 8
-    unstable.zotero
+    # unstable.zotero
     pkgs.obsidian
   ];
 

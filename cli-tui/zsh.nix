@@ -1,11 +1,16 @@
-{ on-nixos, lib, config, ... }:
+{
+  on-nixos,
+  lib,
+  config,
+  ...
+}:
 let
   username = if on-nixos then config.home.username else "EMPTY";
 in
 {
   programs.starship = {
-      enable = false;
-      enableZshIntegration = true;
+    enable = false;
+    enableZshIntegration = true;
   };
 
   programs.zsh = {

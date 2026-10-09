@@ -66,11 +66,11 @@
     systemd.enable = true;
 
     plugins = {
-        dockerManager.enable = true;
-        dankPomodoroTimer.enable = true;
-        # TODO: enable when fixed
-        dankBatteryAlerts.enable = false;
-        wallpaperCarousel.enable = true;
+      dockerManager.enable = true;
+      dankPomodoroTimer.enable = true;
+      # TODO: enable when fixed
+      dankBatteryAlerts.enable = false;
+      wallpaperCarousel.enable = true;
     };
   };
 

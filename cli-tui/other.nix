@@ -19,8 +19,8 @@
       shell = "${pkgs.zsh}/bin/zsh";
     };
     nix-index = {
-        enable = true;
-        enableZshIntegration = true;
+      enable = true;
+      enableZshIntegration = true;
     };
     nix-index-database.comma.enable = true;
   };

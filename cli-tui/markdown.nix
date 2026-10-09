@@ -5,12 +5,10 @@
   ...
 }:
 {
-  home.packages =
-    with pkgs;
-    [
-      # For image.nvim
-      luajitPackages.magick
-    ];
+  home.packages = with pkgs; [
+    # For image.nvim
+    luajitPackages.magick
+  ];
 
   programs.nixvim = {
     plugins = {

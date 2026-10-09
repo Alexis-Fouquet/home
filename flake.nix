@@ -27,13 +27,13 @@
     wallpkgs.url = "github:NotAShelf/wallpkgs";
 
     dms-plugin-registry = {
-        url = "github:AvengeMedia/dms-plugin-registry";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    inputs @ {
+    inputs@{
       nixpkgs,
       unstable-pkgs,
       home-manager,
